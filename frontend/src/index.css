@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+ --primary: #ea582f;
+ --primary-hover :rgb(194, 63, 27);
+}
+.bg-body {
+    background-color: #f7f7f7;
+}
+.bg-primary {
+    background-color: var(--primary);
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    outline: var(--primary);
+    border: var(--primary);
+}
+/* .text-primary {
+    color: var(--primary);
+} */
+.btn-primary:hover{
+    background-color: var(--primary-hover);
+}
+.bg-img{
+    background-image: url("/bg.png");
+    background-size: cover;
+}
