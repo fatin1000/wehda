@@ -5,9 +5,32 @@ import jwt from "jsonwebtoken"
 export const singup = async (req,res)=>{
     try{
         const { username, email, password , phone, company, location,headline, fields, services, labor ,laborPayment} = req.body;
-        if(!username || !email || !password || !phone || !company || !fields || !location || !headline){
-            return res.status(400).json({message:"All fields are required"})
+        
+        if(!username){
+            return res.status(400).json({message:"User name is required"})
         }
+        if(!email){
+            return res.status(400).json({message:"Email is required"})
+        }
+        if(!password){
+            return res.status(400).json({message:"Password is required"})
+        }
+        if(!phone){
+            return res.status(400).json({message:"Phone is required"})
+        }
+        if(!company){
+            return res.status(400).json({message:"Company is required"})
+        }
+        if(!location){
+            return res.status(400).json({message:"Location is required"})
+        }
+        if(!headline){
+            return res.status(400).json({message:"Headline is required"})
+        }
+        if(!fields){
+            return res.status(400).json({message:"Fields is required"})
+        }
+      
         const existingEmail = await User.findOne({email})
         if(existingEmail){
             return res.status(400).json({message: "Email already exists"})
@@ -36,7 +59,7 @@ export const singup = async (req,res)=>{
 
         res.status(201).json({message:"User registered successfully"})
 
-        // send verification by phone
+        //todo : send verification by phone
 
 
     }catch(err){

@@ -8,6 +8,14 @@ import { Link } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
 import { categoryOptions, cityOptions, itemOptions, itemStatusOptions } from "../data/options";
 import { useState } from "react";
+import { useEffect, useRef } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+const fetchScraps = async ({ pageParam = 1 }) => {
+	const res = await axiosInstance.get(`/scraps?page=${pageParam}&limit=10`);
+	return res.data;
+};
+
 
 const DepotPage = () => {
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -25,52 +33,40 @@ const DepotPage = () => {
 		},
 	});
 
-	const { data: scraps , isLoading: scrapLoading } = useQuery({
-		queryKey: ["scraps"],
-		queryFn: async () => {
-			const res = await axiosInstance.get("/scraps");
-			return res.data;
-		},
-	});
+    const [filter, setFilter] = useState({ item: "all", city: "all", category: "all", itemStatus: "all" });
 
+    const { data, fetchNextPage, hasNextPage,isLoading : scrapLoading, isFetchingNextPage } = useInfiniteQuery({
+        queryKey: ["scraps"],
+        queryFn: fetchScraps,
+        getNextPageParam: (lastPage, allPages) => {
+            return lastPage.hasMore ? allPages.length + 1 : undefined;
+        }
+    });
 
-	const [filter,setFilter] = useState({item:"all",city:"all",category:"all",itemStatus:"all"});
+    let filteredScraps = data?.pages.flatMap((page) => page.data) || [];
 
-	let filteredScraps = scraps || [];
+    if (search.trim() !== "") {
+        filteredScraps = filteredScraps.filter((scrap) =>
+            scrap.itemName.value.toLowerCase().includes(search.toLowerCase())
+        );
+    }
 
-	// البحث بالنص
-	if (search.trim() !== "") {
-		 filteredScraps = filteredScraps.filter((scrap) =>
-		scrap.itemName.value.toLowerCase().includes(search.toLowerCase()) 
-		);
-	}
+    const loadMoreRef = useRef(null);
 
-	// if (filter.item === "all" && filter.city === "all" && filter.category === "all" && filter.itemStatus === "all") {
-	// 	filteredScraps = scraps;
-	// }
-	// if (filter.item && filter.item !== "all") {
-	// 	filteredScraps = filteredScraps.filter((scrap) => scrap.itemName.value === filter.item);
-	// }
+    useEffect(() => {
+        if (!hasNextPage) return;
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                fetchNextPage();
+            }
+        }, { threshold: 1 });
 
-	// if (filter.city && filter.city !== "all") {
-	// 	filteredScraps = filteredScraps.filter((scrap) => scrap.location === filter.city);
-	// }
-	// if (filter.category && filter.category !== "all") {
-	// 	filteredScraps = filteredScraps.filter((scrap) => scrap.category === filter.category);
-	// }
-	// if (filter.itemStatus && filter.itemStatus !== "all") {
-	// 	filteredScraps = filteredScraps.filter((scrap) => scrap.itemStatus === filter.itemStatus);
-	// }
-	// if (filter.item === "all" && filter.city === "all" && filter.category !== "all" && filter.itemStatus === "all") {
-	// 	filteredScraps = scraps.filter((scrap) => scrap.category === filter.category);
-	// }
-	// if (filter.item === "all" && filter.city !== "all" && filter.category === "all" && filter.itemStatus === "all") {
-	// 	filteredScraps = scraps.filter((scrap) => scrap.location === filter.city);
-	// }
-	// if (filter.item !== "all" && filter.city === "all" && filter.category === "all" && filter.itemStatus === "all") {
-	// 	filteredScraps = scraps.filter((scrap) => scrap.itemName.value === filter.item);
-	// }
+        if (loadMoreRef.current) observer.observe(loadMoreRef.current);
 
+        return () => observer.disconnect();
+    }, [hasNextPage, fetchNextPage]);
+	
+	
 	filteredScraps = filteredScraps.filter((scrap) => {
 		return (
 		  (filter.item === "all" || scrap.itemName.value === filter.item) &&
@@ -84,8 +80,6 @@ const DepotPage = () => {
 		setFilter({item:"all",city:"all",category:"all",itemStatus:"all"})
 		setSearch("")
 	}
-
-	console.log(filter)
 	return (
 		<>
 		<ScrollTop />
@@ -112,11 +106,15 @@ const DepotPage = () => {
 					<Search className="text-gray-500 absolute right-4 top-1/2 transform -translate-y-1/2" />
 					</div>
 				</div>
-				{(scrapLoading) && (<div className="col-span-1 sm:col-span-2 "><Loader className='mx-auto text-orange-500 animate-spin' size={70} /></div>)}
+				{(scrapLoading) && 
+				(<div className="col-span-1 sm:col-span-2 "><Loader className='mx-auto text-orange-500 animate-spin' size={70} /></div>)}
 
-				{filteredScraps?.map((scrap) => (
-					<Scrap key={scrap._id} scrap={scrap} />
-				))}
+			{filteredScraps.map((scrap) => (
+                <Scrap key={scrap._id} scrap={scrap} />
+            ))}
+            <div ref={loadMoreRef}>
+                {isFetchingNextPage && <p>جاري تحميل المزيد...</p>}
+            </div>
 
 				{filteredScraps?.length === 0 && !scrapLoading && (
 					<div className='bg-white rounded-lg shadow p-8 text-center'>

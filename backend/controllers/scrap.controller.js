@@ -2,34 +2,40 @@ import Scrap from "../models/scrap.model.js"
 import cloudinary from "../lib/cloudinary.js"
 import User from "../models/user.model.js"
 import Notification from "../models/notification.model.js"
-import ScrapResponse from "../models/scrapResponse.model.js";
 
 export const getAllScraps = async (req, res) => {
-    //isDeleted:false
-	try {
-		const scraps = await Scrap.find({isDroped:false})
-			.sort({ createdAt: -1 })
-			.populate({
+    try {
+        const { page = 1, limit = 10 } = req.query;
+        const skip = (page - 1) * limit;
+
+        const scraps = await Scrap.find({ isDroped: false })
+            .sort({ createdAt: -1 })
+            .populate({
                 path: "author",
                 select: "-password",
-                match: { isDeleted: false },   
-            })
-			.populate({
-				path: "comments.user",
-				select: "-password",
                 match: { isDeleted: false },
-			});
-            const filteredScraps = scraps.filter((scrap) => scrap.author !== null);
-        
-		if (filteredScraps.length === 0) {
-			return res.status(200).json([]);
-		}
+            })
+            .populate({
+                path: "comments.user",
+                select: "-password",
+                match: { isDeleted: false },
+            })
+            .skip(skip)
+            .limit(Number(limit));
 
-		res.status(200).json(filteredScraps);
-	} catch (error) {
-		console.log("Error in getAllScraps controller: ", error);
-		res.status(500).json({ error: "Internal server error" });
-	}
+        const filteredScraps = scraps.filter((scrap) => scrap.author !== null);
+        const totalCount = await Scrap.countDocuments({ isDroped: false });
+
+        res.status(200).json({
+            data: filteredScraps,
+            totalCount,
+            hasMore: skip + limit < totalCount, // التحقق من وجود المزيد من البيانات
+        });
+
+    } catch (error) {
+        console.log("Error in getAllScraps controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 };
 
 export const createScrap = async(req,res)=>{
@@ -47,10 +53,21 @@ export const createScrap = async(req,res)=>{
             unitPrice,
             image
             } = req.body
-            let newScrap;
-            if (image) {
-                const imgResult = await cloudinary.uploader.upload(image);
-                newScrap = new Scrap({
+
+            if(!image) return res.status(400).json({message:"Image is required"});
+            if(!itemName) return res.status(400).json({message:"Item name is required"});
+            if(!quantity) return res.status(400).json({message:"Quantity is required"});
+            if(!units) return res.status(400).json({message:"Units is required"});
+            if(!discription) return res.status(400).json({message:"Discription is required"});
+            if(!location) return res.status(400).json({message:"Location is required"});
+            if(!category) return res.status(400).json({message:"Category is required"});
+            if(!itemStatus) return res.status(400).json({message:"Item status is required"});
+            if(!sell) return res.status(400).json({message:"Sell is required"});
+            if(!unitPrice) return res.status(400).json({message:"Unit price is required"});
+            if(sell === "retail" && !minAmount) return res.status(400).json({message:"Min amount is required"});    
+
+            const imgResult = await cloudinary.uploader.upload(image);
+             const newScrap = new Scrap({
                     author: req.user._id,
                     image: imgResult.secure_url,
                     itemName,
@@ -65,21 +82,6 @@ export const createScrap = async(req,res)=>{
                     minAmount,
                     unitPrice,
                 });
-            } else {
-             newScrap= new Scrap({
-                author:req.user._id,
-                itemName,
-                quantity,
-                oldQuantity:quantity, 
-                units, 
-                discription,
-                location,
-                category,
-                itemStatus,
-                sell,
-                minAmount,
-                unitPrice,
-                })}
 
         await newScrap.save();
         res.status(201).json(newScrap)

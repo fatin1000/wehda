@@ -236,7 +236,7 @@ const ScrapCreation = () => {
 							<label className='flex items-center text-info hover:text-info-dark transition-colors duration-200 cursor-pointer'>
 								<Camera  size={20} className='mr-2' />
 								<span> Add Photo</span>
-								<input type='file' accept='image/*' className='hidden' onChange={handleImageChange} />
+								<input type='file' accept='image/*' className='hidden' onChange={handleImageChange} required />
 							</label>
 							<p className="text-gray-500 text-sm mt-2">files allowed: png, jpg, jpeg</p>
 						</div>

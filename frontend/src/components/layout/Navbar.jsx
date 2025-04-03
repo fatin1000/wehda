@@ -48,7 +48,6 @@ const Navbar = () => {
 									<button className="btn bg-primary text-white"><Plus size={18} strokeWidth={3} /> Scrap</button>
 								</Link>
 								<Link to='/services' className='btn bg-white text-neutral border border-gray-400'>
-												<Hammer className='mr-2' size={16} /> 
 												<span className='text-sm'>Services</span>
 								</Link>
 								
@@ -59,10 +58,10 @@ const Navbar = () => {
 
 								  <details className="dropdown cursor-pointer">
 									{open ? <summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(false)}>
-										<XCircle size={20} />
+										<XCircle size={23} />
 										</summary> :
 									<summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(true)}>
-									<User size={20} />
+									<User size={23} />
 									<span className='text-xs font-normal'>Me</span>
 										{unreadNotificationCount > 0 && (<span
 													className='absolute -top-1 -end-2  bg-blue-500 text-white text-xs 

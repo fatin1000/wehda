@@ -9,7 +9,7 @@ const MyDeals = () => {
     const [show, setShow] = useState("scraps");
   return (
     <Dashboardlayout>
-    <div className='flex-1 relative py-6 px-4 lg:px-8 overflow-x-auto'>
+    <div className='flex-1 relative py-6 px-4 lg:px-8 overflow-auto'>
         
         <div className='flex justify-between items-center max-w-7xl mx-auto '>
         <Header title='Your Scraps' />
