@@ -27,7 +27,7 @@ export const singup = async (req,res)=>{
         if(!headline){
             return res.status(400).json({message:"Headline is required"})
         }
-        if(!fields){
+        if(fields.length === 0){
             return res.status(400).json({message:"Fields is required"})
         }
       
