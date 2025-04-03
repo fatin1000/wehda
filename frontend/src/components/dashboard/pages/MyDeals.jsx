@@ -9,7 +9,7 @@ const MyDeals = () => {
     const [show, setShow] = useState("scraps");
   return (
     <Dashboardlayout>
-    <div className='flex-1 overflow-auto relative py-6 px-4 lg:px-8'>
+    <div className='flex-1 relative py-6 px-4 lg:px-8 overflow-x-auto'>
         
         <div className='flex justify-between items-center max-w-7xl mx-auto '>
         <Header title='Your Scraps' />
@@ -36,8 +36,13 @@ const MyDeals = () => {
 			My Scrap Request 
 		</button>
 		</div>
-        {show === "scraps" && <MyScraps />}
-        {show === "scrapsRes" && <MyScrapRes />}
+
+        {show === "scraps" && 
+		<div className='overflow-x-auto'>
+		<MyScraps />
+		</div>
+		}
+        {show === "scrapsRes" && <div className='overflow-x-auto'><MyScrapRes /></div>}
         
     </div>
     </Dashboardlayout>
