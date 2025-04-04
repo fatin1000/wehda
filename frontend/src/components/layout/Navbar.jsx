@@ -51,17 +51,17 @@ const Navbar = () => {
 												<span className='text-sm'>Services</span>
 								</Link>
 								
-								<Link to="/depot" className='text-neutral flex flex-col items-center'>
+								<Link to="/depot" className='text-neutral flex flex-col items-center mx-3'>
 									<img src={warehouse} alt="" className="h-5" />
 									<span className='text-xs '>Home</span>
 								</Link>
 
 								  <details className="dropdown cursor-pointer">
 									{open ? <summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(false)}>
-										<XCircle size={23} />
+										<XCircle size={25} />
 										</summary> :
 									<summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(true)}>
-									<User size={23} />
+									<User size={25} />
 									<span className='text-xs font-normal'>Me</span>
 										{unreadNotificationCount > 0 && (<span
 													className='absolute -top-1 -end-2  bg-blue-500 text-white text-xs 

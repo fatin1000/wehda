@@ -1,7 +1,6 @@
 
 import Header from "../components/common/Header";
 import Dashboardlayout from "../../layout/DashboardLayout";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import MyScraps from "./MyScraps";
 import MyScrapRes from "./MyScrapRes";
@@ -13,9 +12,9 @@ const MyDeals = () => {
         
         <div className='flex justify-between items-center max-w-7xl mx-auto '>
         <Header title='Your Scraps' />
-        <Link to={"/create-scrap"} className='text-sm font-semibold'>
-					<button className="btn bg-primary text-white"> + Add Scrap</button>
-				</Link>
+        {/* <Link to={"/create-scrap"} className='text-sm font-semibold'>
+					<button className=""> + Add Scrap</button>
+				</Link> */}
 			</div>
 
             <div className="flex gap-4 mb-2 p-6">

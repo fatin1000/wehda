@@ -3,7 +3,6 @@ import { axiosInstance } from "../../../lib/axios";
 import { Link } from "react-router-dom";
 
 import { Loader } from "lucide-react";
-import { motion } from "framer-motion";
 
 
 const MyScrapRes = () => {
@@ -17,10 +16,7 @@ const MyScrapRes = () => {
     });
     console.log(scrapResponse);
   return (
-		<div className='flex flex-col'>
-
-			<div className='mx-4'>
-
+		<div className='relative w-full overflow-hidden'>
 				{scrapResLoading ? (
 					<div className="flex flex-col items-center mt-10 text-primary">
 					<Loader size={40} className="animate-spin" />
@@ -31,20 +27,9 @@ const MyScrapRes = () => {
 						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 "> Make Some Now</Link>
 					</div>
 				): (
-          <motion.div
-			className='shadow-lg rounded-xl p-6 border bg-white'
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ delay: 0.2 }}
-		>
-			<div className='flex justify-between items-center mb-6'>
-				<h2 className='text-xl font-semibold '>Your Offers</h2>
-				
-			</div>
-
-			<div className='overflow-x-auto'>
-				<table className='min-w-full divide-y divide-gray-700'>
-					<thead>
+			<div className='w-[100%] flex  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden'>
+				<table className='table-fixed bg-white rounded w-full overflow-x-auto p-3'>
+					<thead className="text-gray-500">
 						<tr>
 							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
 								Item
@@ -66,23 +51,19 @@ const MyScrapRes = () => {
 
 					<tbody className='divide-y divide-gray-700'>
 						{ scrapResLoading ? <div><Loader className="animate-spin" />Loading...</div> : scrapResponse.map((e) => (
-							<motion.tr
-								key={e._id}
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 0.3 }}
-							>
+							<tr key={e._id}>
 								<td className='px-6 py-4 whitespace-nowrap'>
-									<div className="flex items-center gap-1">
-									{e.scrap.image && <img src={e.scrap.image} alt={e.scrap.itemName.value} className='w-10 h-10 rounded' />}
+									<div className="flex items-center gap-1 flex-wrap">
+									<div className="flex-shrink-0">
+								<img src={e.scrap.image} alt={e.scrap.itemName.value} className='w-10 h-10 rounded' />
+								</div>
 									<Link to={`/scrap/${e.scrap._id}`} className='font-medium text-orange-500'>
 										{e.scrap.itemName.value}
 									</Link>
 									</div>
-									
 								</td>
 								<td className='px-6 py-4 whitespace-nowrap'>
-									<Link to={`/profile/${e.recipient._id}`} className='flex items-center gap-1'>
+									<Link to={`/profile/${e.recipient._id}`} className='flex items-center gap-1 flex-wrap'>
 										<div className='flex-shrink-0 h-10 w-10'>
 											<div className='h-10 w-10 rounded-full overflow-hidden'>
 												<img src={e.recipient.profilePic ? e.recipient.profilePic : "/avatar.png"} alt={e.recipient.username} />
@@ -116,16 +97,16 @@ const MyScrapRes = () => {
 										{e.status}
 									</span>
 								</td>
-							</motion.tr>
+							</tr>
 						))}
 					</tbody>
 				</table>
 			</div>
-		</motion.div>
+		
         )}
 
 				
-			</div>
+			
 		</div>
 		
   )

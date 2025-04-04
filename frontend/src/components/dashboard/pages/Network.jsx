@@ -54,9 +54,9 @@ const Network = () => {
                                 <h3 className="text-gray-500 mb-4">Users You Follow:</h3>
 
                                 {network.following.map((user) => (
-                                    <div key={user._id} className="flex flex-col items-center gap-4 bg-white py-5 px-14 rounded-xl border mb-4 sm:flex-row justify-between">
+                                    <div key={user._id} className=" flex flex-col items-center gap-4 py-5 px-14 rounded-xl border mb-4 sm:flex-row justify-between bg-white shadow-lg">
                                         <div className="w-full">
-										<div className="flex justify-between items-start">
+										<div className="flex flex-col mb-4 sm:flex-row sm:justify-between items-start">
                                         <Link to={`/profile/${user._id}`} className="flex mb-4">
                                         <img
                                             src={user.profilePic? user.profilePic : "/avatar.png"}

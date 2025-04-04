@@ -32,11 +32,10 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 
   return (
     <Dashboardlayout>
-		<div className='flex-1 overflow-auto relative py-6 px-4 lg:px-8'>
+		<div className='flex flex-col min-h-screen py-6 px-4 lg:px-8'>
 			<Header title='The Items that you Like' />
 
-      <div className="p-6">
-			<div>
+     
 			{ myLikedScrapsError ? (
 				<div>Error</div>
 			): myLikedScrapsArr?.length === 0 ? (
@@ -45,14 +44,9 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 "> Make Some Now</Link>
 					</div>
 			): myLikedScrapsSuccess && (
-				<div className='shadow-lg rounded-xl p-6 border bg-white'>
-		<div className='flex justify-between items-center mb-6'>
-			<h2 className='text-xl font-semibold '>Scraps You Liked</h2>
-			
-		</div>
-
-		<div className='overflow-x-auto'>
-			<table className='min-w-full divide-y divide-gray-700'>
+				<>
+		<div className='w-[100%]  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden '>
+			<table className='table-fixed  bg-white rounded w-full min-w-fit p-3'>
 				<thead>
 					<tr>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
@@ -80,15 +74,17 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 					{ myLikedScrapsLoading ? <div><Loader className="animate-spin" />Loading...</div> : myLikedScrapsArr.map((e) => (
 						<tr key={e._id}>
 							<td className='px-6 py-4 whitespace-nowrap'>
-							<div className="flex items-center gap-1">
-									{e.image && <img src={e.image} alt={e.itemName.value} className='w-10 h-10 rounded' />}
+							<div className="flex items-center gap-1 flex-wrap">
+							<div className="flex-shrink-0">
+  <img src={e.image} alt={e.itemName.value} className='w-10 h-10 rounded' />
+</div>
 									<Link to={`/scrap/${e._id}`} className='font-medium text-orange-500'>
 										{e.itemName.value}
 									</Link>
 									</div>
 							</td>
-							<td className='px-6 py-4 whitespace-nowrap'>
-								<Link to={`/profile/${e.author._id}`} className='flex items-center'>
+							<td className='px-6 py-4'>
+								<Link to={`/profile/${e.author._id}`} className='flex items-center flex-wrap'>
 									<div className='flex-shrink-0 h-10 w-10'>
 										<div className='h-10 w-10 rounded-full overflow-hidden'>
 											<img src={e.author.profilePic ? e.author.profilePic : "/avatar.png"} alt={e.author.username} />
@@ -100,12 +96,12 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 								</Link>
 							</td>
 							
-							<td className='px-6 py-4 whitespace-nowrap'>
+							<td className='px-6 py-4 '>
 								<span className='px-2 inline-flex  leading-5 font-semibold '>
 									{e.quantity}{" "}{e.units}
 								</span>
 							</td>
-							<td className='px-6 py-4 whitespace-nowrap'>
+							<td className='px-6 py-4 '>
 								<span className='px-2 inline-flex  leading-5 font-semibold '>
 									{e.unitPrice} SR
 								</span>
@@ -123,7 +119,7 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 								</span>
 							</td>
 
-							<td className='px-6 py-4 whitespace-nowrap'>
+							<td className='px-6 py-4'>
 								<button onClick={() => likeScrap(e._id)} disabled={isLikingScrap}>
 									<X size={20} color="red"/>
 								</button>
@@ -133,11 +129,8 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</>
 			)}
-		</div>
-		
-      </div>
 		</div>
 		</Dashboardlayout>
   )

@@ -75,7 +75,7 @@ const Mail = () => {
 			)}
 
         { allMailsLoading ? <div>loading...</div> : mails.length > 0 ? (
-			<div className="overflow-x-auto w-[400px] sm:overflow-x-hidden mx-auto sm:w-[90%] overflow-y-hidden">
+			<div className="overflow-x-auto w-[400px] sm:overflow-x-hidden mx-auto sm:w-[90%]">
           <table className="text-center bg-white p-5 m-4 rounded">
           <thead className="bg-gray-200">
 						<tr >
