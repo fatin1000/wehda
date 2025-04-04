@@ -37,12 +37,8 @@ const MyDeals = () => {
 		</button>
 		</div>
 
-        {show === "scraps" && 
-		<div className='overflow-x-auto'>
-		<MyScraps />
-		</div>
-		}
-        {show === "scrapsRes" && <div className='overflow-x-auto'><MyScrapRes /></div>}
+        {show === "scraps" && <MyScraps />}
+        {show === "scrapsRes" && <MyScrapRes />}
         
     </div>
     </Dashboardlayout>

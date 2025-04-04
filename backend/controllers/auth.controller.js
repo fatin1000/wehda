@@ -28,7 +28,7 @@ export const singup = async (req,res)=>{
             return res.status(400).json({message:"Headline is required"})
         }
         if(fields.length === 0){
-            return res.status(400).json({message:"Fields is required"})
+            return res.status(400).json({message:"Fields is required at least one"})
         }
       
         const existingEmail = await User.findOne({email})

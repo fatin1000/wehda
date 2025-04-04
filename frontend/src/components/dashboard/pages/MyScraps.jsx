@@ -157,9 +157,21 @@ const MyScraps = () => {
                { userScraps && ( (myScrapsResArr.length === 0) ? (<div className="bg-gray-200 p-4 rounded">
                   <h1 className=" text-gray-500">There are no offers yet</h1>
                 </div>) :
-                scrapResLoading ? "loading ..." : myScrapsResArr.map((scrapRes) =>(
+                scrapResLoading ? "loading ..." : 
+                <table className="w-full overflow-x-auto min-w-[900px]">
+                  <thead>
+                    <tr>
+                      <th className="text-left">Sender</th>
+                      <th className="text-left">Quantity</th>
+                      <th className="text-left">Unit Price</th>
+                      <th className="text-left">Total Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                { myScrapsResArr.map((scrapRes) =>(
                   (scrapRes.scrap._id == scrap._id) ?
-                     ( <div key={scrapRes._id} className="flex justify-between items-center bg-white p-4 rounded shadow my-2 ">
+                     ( <tr key={scrapRes._id} className="flex justify-between items-center bg-white p-4 rounded shadow my-2 ">
+                              <td className="flex items-center">
                                 <Link to={`/profile/${scrapRes.sender._id}`} className='flex items-center'>
                                   <div className='flex-shrink-0 h-10 w-10'>
                                     <div className='h-10 w-10 rounded-full flex items-center justify-center text-white font-semibold overflow-hidden'>
@@ -170,17 +182,18 @@ const MyScraps = () => {
                                     <div className=' font-medium'>{scrapRes.sender.username}</div>
                                   </div>
                                 </Link>
-                                <div className="divider divider-horizontal"></div>
+                              </td>
+                              <td className="flex items-center">
                                 <span className='px-2 inline-flex  leading-5 font-semibold '>
                                 {scrapRes.quantity}{" "} {scrap.units}
                                 </span>
-                                <div className="divider divider-horizontal"></div>
-                                <div className='px-2 inline-flex  leading-5 font-semibold'>
-										              {scrapRes.price} SR
-									              </div>
-                                <div className="divider divider-horizontal"></div>
-                                
-                                <div >
+                              </td>
+                              <td className="flex items-center">
+                                <span className='px-2 inline-flex  leading-5 font-semibold '>
+                                {scrapRes.unitPrice} SR
+                                </span>
+                              </td>
+                              <td className="flex items-center">
                                   {( scrapRes.quantity > scrap.quantity && scrapRes.status === "pending") ?
                                    (<div className="bg-gray-400 text-gray-700 py-2 px-4 rounded-full flex items-center gap-1 ">Auto Rejected</div>)
                                   :(scrapRes.status === "pending" && scrap.scrapStatus === "open") ? (
@@ -195,10 +208,11 @@ const MyScraps = () => {
                                   : (
                                     <div className="bg-gray-300 text-gray-700 py-2 px-4 rounded-full flex items-center gap-1 ">Auto Rejected</div>
                                   )}
-                                 </div>
-
-                            </div>): null )
-                ))}
+                              </td>
+                            </tr>): null )
+                )}
+                  </tbody>
+                </table>)}
               </div>
             ))}
           </div>

@@ -113,7 +113,7 @@ const DepotPage = () => {
                 <Scrap key={scrap._id} scrap={scrap} />
             ))}
             <div ref={loadMoreRef}>
-                {isFetchingNextPage && <p>جاري تحميل المزيد...</p>}
+                {isFetchingNextPage && <p>Loading more scraps...</p>}
             </div>
 
 				{filteredScraps?.length === 0 && !scrapLoading && (
