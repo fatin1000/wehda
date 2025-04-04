@@ -163,14 +163,14 @@ const MyScraps = () => {
                     <tr>
                       <th className="text-left">Sender</th>
                       <th className="text-left">Quantity</th>
-                      <th className="text-left">Unit Price</th>
-                      <th className="text-left">Total Price</th>
+                      <th className="text-left">Price</th>
+                      <th className="text-left">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                 { myScrapsResArr.map((scrapRes) =>(
                   (scrapRes.scrap._id == scrap._id) ?
-                     ( <tr key={scrapRes._id} className="flex justify-between items-center bg-white p-4 rounded shadow my-2 ">
+                     ( <tr key={scrapRes._id} className="border-b border-gray-200">
                               <td className="flex items-center">
                                 <Link to={`/profile/${scrapRes.sender._id}`} className='flex items-center'>
                                   <div className='flex-shrink-0 h-10 w-10'>
@@ -183,15 +183,15 @@ const MyScraps = () => {
                                   </div>
                                 </Link>
                               </td>
-                              <td className="flex items-center">
-                                <span className='px-2 inline-flex  leading-5 font-semibold '>
+                              <td>
+                               
                                 {scrapRes.quantity}{" "} {scrap.units}
-                                </span>
+                              
                               </td>
-                              <td className="flex items-center">
-                                <span className='px-2 inline-flex  leading-5 font-semibold '>
+                              <td >
+                                
                                 {scrapRes.unitPrice} SR
-                                </span>
+                               
                               </td>
                               <td className="flex items-center">
                                   {( scrapRes.quantity > scrap.quantity && scrapRes.status === "pending") ?
