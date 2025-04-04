@@ -13,7 +13,7 @@ const Notifications = () => {
 	return (
 		<SettingSection icon={Bell} title={"Notifications"}>
 			<ToggleSwitch
-				label={"Push Notifications"}
+				label={"WhatsApp Notifications"}
 				isOn={notifications.push}
 				onToggle={() => setNotifications({ ...notifications, push: !notifications.push })}
 			/>
