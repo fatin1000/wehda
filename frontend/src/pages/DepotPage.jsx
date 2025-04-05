@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../lib/axios";
 import Sidebar from "../components/Sidebar";
-import { Bookmark,  Cookie, Loader, MapPin, PackageOpen, Search, ShoppingBasket, SlidersHorizontal} from "lucide-react";
+import { Bookmark,  Cookie, Loader, MapPin, PackageOpen, Search, ShoppingBasket, SlidersHorizontal, TriangleAlert, X} from "lucide-react";
 import RecommendedUser from "../components/RecommendedUser";
 import Scrap from "../components/Scrap";
 import { Link } from "react-router-dom";
@@ -20,6 +20,7 @@ const fetchScraps = async ({ pageParam = 1 }) => {
 const DepotPage = () => {
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 	const [search, setSearch] = useState("");
+	const [isfilterOpen, setIsfilterOpen] = useState(false);
 
 	const { data: recommendedUsers } = useQuery({
 		queryKey: ["recommendedUsers"],
@@ -100,11 +101,84 @@ const DepotPage = () => {
 			)}
 			</div>
 			<div className='col-span-1 lg:col-span-2'>
-				<div className="bg-white rounded-lg shadow p-4 mb-4 flex">
+				<div className="bg-white rounded-lg shadow p-4 mb-4">
+					<div>
+					<div className="flex">
 					<div className="bg-gray-100 border border-gray-300 rounded-lg w-full relative ">
 					<input type="text" className="w-full bg-gray-100 py-2 px-4 rounded-lg" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search for scraps" />
 					<Search className="text-gray-500 absolute right-4 top-1/2 transform -translate-y-1/2" />
 					</div>
+					<button className="btn border border-gray-300 ml-4 sm:hidden" onClick={() => setIsfilterOpen(!isfilterOpen)}>
+						{isfilterOpen ? <X size={18} /> : <SlidersHorizontal size={18} />}
+					</button>
+					</div>
+					{(filter.item !== "all" || filter.city !== "all" || filter.category !== "all" || filter.itemStatus !== "all") && (
+    <p className="text-gray-500 text-sm flex items-center gap-1 mt-1"> <TriangleAlert />You are applying a filter.you can reset it.</p>
+)}					</div>
+					{isfilterOpen && (
+						<div className='bg-white sm:hidden p-4 mt-2'>
+							<div className="flex justify-between items-center">
+							<h2 className='font-semibold flex items-center gap-2'><SlidersHorizontal size={18} /><span>Filter</span></h2>
+							<button className="text-red-400 text-sm font-semibold" onClick={()=> resetFilter()}> Reset</button>
+							</div>
+							
+					<div className="flex flex-col gap-2 mb-2 mt-4 sm:mt-8">
+						<label htmlFor="item" className="text-gray-500 text-sm flex items-center gap-1"><ShoppingBasket size={15} className="text-orange-300" /><span>Item</span> </label>
+						<select id="item" name="item" className="flex-1 border rounded p-1"
+						 value={filter.item}
+						 onChange={(e) => setFilter({...filter,item:e.target.value})}>
+							<option value="all">All</option>
+							{itemOptions.map((item) => (
+								<option key={item.value} value={item.value}>
+									{item.label}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className="flex flex-col gap-2  mt-4">
+					<label htmlFor="location" className="text-gray-500 text-sm flex items-center gap-1"><MapPin size={15} className="text-orange-300" /><span>Location</span></label>
+						<select id="location" name="location" className="flex-1 border rounded p-1"
+						value={filter.city}
+						onChange={(e) => setFilter({...filter,city:e.target.value})}>
+							<option value="all" >All</option>
+							{cityOptions.map((item) => (
+								<option key={item} value={item}>
+									{item}
+								</option>
+							))}
+						</select>        
+					</div>
+					<div className="flex flex-col gap-2  mt-4">
+						<label htmlFor="category" className="text-gray-500 text-sm flex items-center gap-1"><Bookmark  size={15} className="text-orange-300" /><span>Category</span></label>
+						<select id="category" name="category" className="flex-1 border rounded p-1" 
+						value={filter.category}
+						onChange={(e) => setFilter({...filter,category:e.target.value})}>
+							<option value="all" >All</option>
+							{categoryOptions.map((e) => (
+								<option key={e} value={e}>
+									{e}
+								</option>
+							))}
+						</select>        
+					</div>
+			
+					<div className="flex flex-col gap-2  mt-4">
+					<label htmlFor="item-status" className="text-gray-500 text-sm flex items-center gap-1"><Cookie size={15} className="text-orange-300" /><span> Item Status</span></label>
+						<select id="item-status" name="item-status" className="flex-1 border rounded p-1"
+						value={filter.itemStatus}
+						onChange={(e) => setFilter({...filter,itemStatus:e.target.value})}>
+							<option value="all" >All</option>
+							{itemStatusOptions.map((e) => (
+								<option key={e} value={e}>
+									{e}
+								</option>
+							))}
+						</select>
+					</div>
+				  
+				</div>
+						
+					)}
 				</div>
 				{(scrapLoading) && 
 				(<div className="col-span-1 sm:col-span-2 "><Loader className='mx-auto text-orange-500 animate-spin' size={70} /></div>)}
@@ -134,7 +208,7 @@ const DepotPage = () => {
 
 			</div>
 			{/* filter */}
-			<div className='col-span-1 order-first sm:order-none'>
+			<div className='hidden lg:block lg:col-span-1'>
 			<div className='bg-white rounded-lg shadow mb-4 p-4'>
 				<div className="flex justify-between items-center">
 				<h2 className='font-semibold flex items-center gap-2'><SlidersHorizontal size={18} /><span>Filter</span></h2>

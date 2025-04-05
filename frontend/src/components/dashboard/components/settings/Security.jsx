@@ -39,14 +39,14 @@ const Security = () => {
 			 */}
 			<div className='mt-4 relative'>
 				<button
-					className='bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded 
+					className='btn bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded 
         transition duration-200'
 					onClick={() => setShowPassword(true)}
 				>
 					Change Password
 				</button>
 				{showPassword && (
-					<form className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md border border-gray-300 shadow-lg z-10'
+					<form className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 sm:p-6 rounded-md border border-gray-300 shadow-lg z-10 w-[80vw] sm:w-[400px] lg:w-[600px]'
 					onSubmit={(e) => {
 						e.preventDefault();
 						if (newPassword !== confirmPassword) {
@@ -87,7 +87,7 @@ const Security = () => {
 							onChange={(e) => setConfirmPassword(e.target.value)}
 						/>
 						<button
-							className='bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded 
+							className='btn bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded 
 		  					transition duration-200 mt-4'
 							type='submit'
 							disabled={isPending}

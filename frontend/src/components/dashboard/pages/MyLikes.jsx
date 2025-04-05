@@ -35,10 +35,14 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 		<div className='flex flex-col min-h-screen py-6 px-4 lg:px-8'>
 			<Header title='The Items that you Like' />
 
-     
+			{myLikedScrapsLoading && (
+				<div className="flex flex-col items-center mt-10 text-primary">
+					<Loader size={40} className="animate-spin" />
+				</div>
+			)}
 			{ myLikedScrapsError ? (
 				<div>Error</div>
-			): myLikedScrapsArr?.length === 0 ? (
+			): !myLikedScrapsLoading && myLikedScrapsArr?.length === 0 ? (
 				<div className="flex flex-col items-center mt-10">
 						<p className="text-center text-2xl text-gray-500 font-semibold">You have not liked any Scraps yet 🥱!</p>
 						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 "> Make Some Now</Link>
@@ -46,7 +50,7 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 			): myLikedScrapsSuccess && (
 				<>
 		<div className='w-[100%]  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden '>
-			<table className='table-fixed  bg-white rounded w-full min-w-fit p-3'>
+			<table className='table-auto  bg-white rounded w-full min-w-fit p-3'>
 				<thead>
 					<tr>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>

@@ -48,7 +48,7 @@ const NotificationsPage = () => {
 					markAsReadMutation(notification._id);
 				}
 			});
-		}, 5000); // 5000 ميلي ثانية = 5 ثانية
+		}, 3000);
 	
 		// تنظيف المؤقت عند مغادرة الصفحة
 		return () => clearTimeout(timer);

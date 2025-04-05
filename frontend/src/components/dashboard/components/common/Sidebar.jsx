@@ -1,5 +1,4 @@
 import { CircleDollarSign, Menu, Settings, ThumbsUp, Users } from "lucide-react";
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -16,15 +15,15 @@ const SIDEBAR_ITEMS = [
 	{ name: "Settings", icon: Settings, color: "gray-900", href: "/settings" },
 ];
 
-const Sidebar = () => {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+// eslint-disable-next-line react/prop-types
+const Sidebar = ({isSidebarOpen, setIsSidebarOpen }) => {
 	
 	const location = useLocation();
 	let activeLink = location.pathname;
     const baseClass ='flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-300 hover:text-gray-900 transition-colors mb-2'
 	return (
 		<motion.div
-			className={`relative z-3 transition-all duration-300 ease-in-out flex-shrink-0 bg-white min-h-[100vh] ${
+			className={`fixed top-20 left-0 z-100 transition-all duration-300 ease-in-out flex-shrink-0 bg-white h-[calc(100vh-20px)] ${
 				isSidebarOpen ? "w-64" : "w-20"
 			}`}
 			animate={{ width: isSidebarOpen ? 256 : 80 }}
@@ -36,7 +35,7 @@ const Sidebar = () => {
 					onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 					className='p-2 rounded-full  transition-colors max-w-fit flex items-center'
 				>
-					<Menu size={35} className="hover:bg-gray-300 p-2 rounded-full"/> 
+					<Menu size={35} className="hover:bg-gray-300 p-2 rounded-full flex-shrink-0"/> 
 					
 					<AnimatePresence>
 									{isSidebarOpen && (
@@ -57,7 +56,8 @@ const Sidebar = () => {
 					{SIDEBAR_ITEMS.map((item) => (
 						<Link key={item.href} to={`/dashboard${item.href}`}>
 							<motion.div className={activeLink == `/dashboard${item.href}` ? `${baseClass} bg-primary text-white` : baseClass}>
-								<item.icon size={20} className={activeLink == `/dashboard${item.href}` ? "text-white" : `text-${item.color}`} />
+								<item.icon size={20} className={activeLink == `/dashboard${item.href}` ? "text-white flex-shrink-0" : `text-${item.color} flex-shrink-0`} 
+								/>
 								<AnimatePresence>
 									{isSidebarOpen && (
 										<motion.span

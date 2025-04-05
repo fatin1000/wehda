@@ -75,7 +75,7 @@ const MyScraps = () => {
 
   const { mutate: deleteScrap, isPending: isDeletingScrap } = useMutation({
 		mutationFn: async (scrapId) => {
-			await axiosInstance.delete(`/scraps/delete/${scrapId}`);
+			await axiosInstance.put(`/scraps/delete/${scrapId}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["scraps"] });
@@ -90,7 +90,6 @@ const MyScraps = () => {
 	});
 
   const handleScrapDelete = (scrapId) => {
-    if (!window.confirm("Are you sure you want to delete this scrap?")) return;
 		deleteScrap(scrapId);
   }
 
@@ -107,7 +106,7 @@ const MyScraps = () => {
         ) : scrapLoading ? "loading ..." : (
           <div className="w-full">
             {myScrapsArr.map((scrap) => (
-              <div key={scrap._id} className= "flex flex-col mx-4  bg-white p-4 rounded-xl shadow mb-4">
+              <div key={scrap._id} className= "flex flex-col sm:mx-4 border  bg-white p-4 rounded-xl shadow mb-4">
                 <div className="flex justify-between gap-2 mb-4">
                     { scrap.scrapStatus === "open" ? (
                       <div className="flex items-center gap-2">
@@ -120,13 +119,13 @@ const MyScraps = () => {
                     ) }
                 
                   <div className="flex">
-                  <Link to={`/scrap/${scrap._id}`} className=" text-blue-400 py-2 px-4 rounded  hover:text-blue-500 me-2"><ExternalLink size={25} /></Link>
+                  <Link to={`/scrap/${scrap._id}`} className=" text-gray-500 py-2 px-4 rounded  hover:text-blue-500 me-2"><ExternalLink size={25} /></Link>
                   <button onClick={ () => handleScrapDelete(scrap._id)} className=" text-gray-500 py-2 px-4  hover:text-red-500" disabled={isDeletingScrap}><Trash2 size={25} /></button>
                   </div>
                   </div>
                 <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-between mb-7">
                   
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <div className="w-20 h-20 overflow-hidden rounded">
                       <img className="w-full h-full object-cover" src={scrap.image} alt={scrap.itemName} />
                     </div>
@@ -153,18 +152,23 @@ const MyScraps = () => {
                  {scrap.deal.length > 0 && <div className="text-green-500 flex items-center mt-2"><CircleDollarSign /> { scrap.deal.reduce((total, deal) => total + deal.price, 0) } SR</div>}
                   </div>
                 </div>
-        
-               { userScraps && ( (myScrapsResArr.filter((scrapRes) => (scrapRes.scrap._id === scrap._id)).length === 0) ? (<div className="bg-gray-200 p-4 rounded">
+              
+               { userScraps && ( (myScrapsResArr.filter((scrapRes) => (scrapRes.scrap._id === scrap._id)).length === 0) ? (
+                <div className="bg-gray-200 p-4 rounded">
                   <h1 className=" text-gray-500">There are no offers yet</h1>
                 </div>) :
+                
                 scrapResLoading ? "loading ..." :
-                <div className="w-[100%]  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden">
-                <table className="table-fixed  bg-white rounded w-full min-w-fit p-3">
+                <>
+                <p className="text-gray-500 sm:hidden">Scroll horizontally to see offers</p>
+
+                <div className="w-[100%]  rounded-lg border border-gray-300 p-2 overflow-x-auto">
+                <table className="table-auto  bg-white rounded w-full min-w-fit p-3">
                  
                   <tbody className="divide-y divide-gray-300 m-2" >
                 { myScrapsResArr.map((scrapRes) =>(
                   (scrapRes.scrap._id == scrap._id) ?
-                     ( <tr key={scrapRes._id} className="">
+                     ( <tr key={scrapRes._id}>
                               <td className="p-2">
                                 <div>
                                 <Link to={`/profile/${scrapRes.sender._id}`} className='flex flex-wrap'>
@@ -210,6 +214,7 @@ const MyScraps = () => {
                   </tbody>
                 </table>
                 </div>
+                </>
               )}
               </div>
             ))}

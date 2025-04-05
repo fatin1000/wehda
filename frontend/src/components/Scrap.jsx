@@ -106,11 +106,29 @@ const Scrap = ({ scrap }) => {
 		},
 	});
 
+	const handleShare = async (scrapId) => {
+		const scrapURL = `${window.location.origin}/scrap/${scrapId}`;
+	
+		if (navigator.share) {
+			try {
+				await navigator.share({
+					title: "Check this scrap!",
+					text: "Look at this deal I found!",
+					url: scrapURL
+				});
+			} catch (error) {
+				console.error("Error sharing:", error);
+			}
+		} else {
+			alert("Sharing is not supported in your browser.");
+		}
+	};
+
 	const renderButton = () => {
 		if(scrapResStatus){
 			if(scrapResStatusLoading){
 				return (
-					<button className='px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-500' disabled>
+					<button className='btn px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-500' disabled>
 						Loading...
 					</button>
 				);
@@ -128,11 +146,10 @@ const Scrap = ({ scrap }) => {
 						<div>
 						<div className="m-4 bg-green-100 text-green-600 p-4 rounded-full flex flex-col items-center">
 						<p className="flex justify-center items-center gap-2 font-semibold"><PartyPopper size={20} />  Accepted </p>
-						<p>you Deal Accepted you can send new one</p>
+						<p>you Deal Accepted</p>
 						</div>
-						<div className=" flex justify-end">
-						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4">Make Deal</Link>
-						</div>
+						<p className="text-gray-500 text-sm">you can send new one</p>
+						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
 						</div>
 					);
 				case "rejected":
@@ -140,11 +157,10 @@ const Scrap = ({ scrap }) => {
 						<div>
 						<div className="m-4 bg-red-100 text-red-600 p-4 rounded-full flex flex-col items-center">
 							<p className="flex justify-center items-center gap-2 font-semibold"><CircleX size={20} /> Rejected </p>
-							<p className="">😓 you Deal has been Rejected you can send new one</p>
+							<p className="">😓 you Deal has been Rejected</p>
 						</div>
-						<div className=" flex justify-end">
-						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4">Make Deal</Link>
-						</div>
+						<p className="text-gray-500 text-sm">you can send new one</p>
+						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
 						</div>
 					);
 				case "auto Rejected":
@@ -156,21 +172,19 @@ const Scrap = ({ scrap }) => {
 					);
 				default:
 					return (
-						<div className=" flex justify-end">
-					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4">Make Deal</Link>
-					</div>
+					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
 					);
 					
 			}
 		}else{
 			return (
-				<div className=" flex justify-end">
-					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4">Make Deal</Link>
-				</div>
+					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
 			);
 		}
 	};
     
+
+
 	return (
 		<div key={scrap._id} className='bg-white rounded-lg shadow mb-4'  >
 			{isOwner && (
@@ -259,7 +273,7 @@ const Scrap = ({ scrap }) => {
 						text={`Comment (${comments.length})`}
 						onClick={() => setShowComments(!showComments)}
 					/>
-					<PostAction icon={<Share2 size={18} />} text='Share' />
+					<PostAction icon={<Share2 size={18} />} text='Share' onClick={handleShare} />
 				</div>
 			</div>
 

@@ -19,7 +19,7 @@ const DangerZone = () => {
 	});
 	return (
 		<div
-			className='bg-red-500 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border  mb-8 '
+			className='bg-red-500 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border  mb-8'
 		>
 			<div className='flex items-center mb-4'>
 				<Trash2 className='text-red-400 mr-3' size={24} />
@@ -27,7 +27,7 @@ const DangerZone = () => {
 			</div>
 			<p className='text-gray-100 mb-4'>Permanently delete your account and all of your content.</p>
 			<button
-				className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded 
+				className='btn border-none bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded 
       transition duration-200'
 	  onClick={()=> setIsOpen(true)}
 			>
@@ -35,18 +35,18 @@ const DangerZone = () => {
 			</button>
 
 			{isOpen && (
-				<div className=' fixed inset-0 flex items-center justify-center z-50 border border-gray-300'>
-					<div className='bg-white p-6 rounded-lg shadow-lg'>
+				
+					<div className='bg-white p-6 rounded-lg shadow-lg absolute top-0 left-0 w-full h-full flex flex-col justify-center z-50 border border-gray-300'>
 						<h2 className='text-lg font-semibold mb-4'>Are you sure you want to delete your account?</h2>
-						<div className='flex justify-center'>
+						<div className='flex'>
 							<button
-								className='bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded mr-2'
+								className='btn bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-8 rounded mr-2'
 								onClick={() => setIsOpen(false)}
 							>
 								Cancel
 							</button>
 							<button
-								className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+								className='btn bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-8 rounded'
 								onClick={() => {deleteAccount(); navigate("/") }}
 								disabled={isPending}
 							>
@@ -54,7 +54,7 @@ const DangerZone = () => {
 							</button>
 						</div>
 					</div>
-				</div>
+				
 			)}
 		</div>
 	);

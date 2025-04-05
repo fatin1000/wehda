@@ -28,7 +28,7 @@ const MyScrapRes = () => {
 					</div>
 				): (
 			<div className='w-[100%] flex  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden'>
-				<table className='table-fixed bg-white rounded w-full overflow-x-auto p-3'>
+				<table className='table-auto bg-white rounded w-full overflow-x-auto p-3'>
 					<thead className="text-gray-500">
 						<tr>
 							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>

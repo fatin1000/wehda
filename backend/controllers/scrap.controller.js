@@ -232,7 +232,7 @@ export const getFollowingScraps = async (req, res) => {
 export const getMyScraps = async (req, res) => {
 try {
     const userId = req.user._id;
-    const scraps = await Scrap.find({ author: userId})
+    const scraps = await Scrap.find({ author: userId ,isDroped:false})
         .sort({ createdAt: -1 })
         .populate({
             path: "author",

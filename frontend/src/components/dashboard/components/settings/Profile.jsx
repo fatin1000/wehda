@@ -19,7 +19,7 @@ const Profile = ({ img ,username ,headline ,id}) => {
 				</div>
 			</div>
 
-			<Link to={`/profile/${id}`} className='bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition duration-200 w-full sm:w-auto'>
+			<Link to={`/profile/${id}`} className='bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 btn transition duration-200 w-full sm:w-auto'>
 				Edit Profile
 			</Link>
 		</SettingSection>

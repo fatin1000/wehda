@@ -66,11 +66,12 @@ export default function Sidebar({ user }) {
 					Visit your profile
 				</Link>
 			</div>
-			<div className='border-t border-base-100 p-4 gap-2'>
-				<Link to="/create-scrap" className='text-sm font-semibold w-full'>
-					<button className="btn bg-primary text-white">Create Scrap</button>
+		<div className="p-4">
+		<Link to="/create-scrap" className='btn border border-gray-500 bg-white text-sm font-semibold w-full'>
+					Create Scrap
 				</Link>
-			</div>
+		</div>
+				
 		</div>
 	);
 }

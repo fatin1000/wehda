@@ -48,7 +48,7 @@ const Navbar = () => {
 									<button className="btn bg-primary text-white"><Plus size={18} strokeWidth={3} /> Scrap</button>
 								</Link>
 								<Link to='/services' className='btn bg-white text-neutral border border-gray-400'>
-												<span className='text-sm'>Services</span>
+												<span >Services</span>
 								</Link>
 								
 								<Link to="/depot" className='text-neutral flex flex-col items-center mx-3'>
@@ -56,7 +56,7 @@ const Navbar = () => {
 									<span className='text-xs '>Home</span>
 								</Link>
 
-								  <details className="dropdown cursor-pointer">
+								  <details className="dropdown cursor-pointer ">
 									{open ? <summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(false)}>
 										<XCircle size={25} />
 										</summary> :
@@ -70,7 +70,7 @@ const Navbar = () => {
 													{unreadNotificationCount}
 												</span>)}
 									</summary>}
-									<ul className="menu dropdown-content bg-base-100 rounded-b z-1 w-52 p-2 shadow end-0 mt-3"
+									<ul className="menu dropdown-content bg-base-100 rounded-b z-1  p-2 shadow end-0 mt-3 text-lg sm:text-base"
 										onClick={(e) => {
 											const details = e.currentTarget.closest("details");
 											if (details) {
@@ -81,9 +81,9 @@ const Navbar = () => {
 									>
 										
 										<li>
-											<Link to='/notifications' className='text-neutral flex items-center '>
-												<Bell size={15} />
-												<span className='text-sm'>Notifications</span>
+											<Link to='/notifications' className='text-neutral flex items-center whitespace-nowrap'>
+												<Bell className="sm:size-4" />
+												<span >Notifications</span>
 												{unreadNotificationCount > 0 && (
 													<span
 														className=' bg-blue-500 text-white text-xs 
@@ -95,35 +95,35 @@ const Navbar = () => {
 											</Link>
 										</li>
 										<li>
-											<Link to="/dashboard" className='text-neutral flex items-center '>
-												<UserPlus className='mr-2' size={16} />
-												<span className='text-sm'> My Dashboard </span>
+											<Link to="/dashboard" className='text-neutral flex items-center whitespace-nowrap '>
+												<UserPlus className='mr-2 sm:size-4'  />
+												<span > My Dashboard </span>
 											</Link>
 										</li>
 										<li>
-											<Link to='/services' className='text-neutral flex items-center '>
-												<Hammer className='mr-2' size={16} /> 
-												<span className='text-sm'>Service Providers</span>
+											<Link to='/services' className='text-neutral flex items-center whitespace-nowrap'>
+												<Hammer className='mr-2 sm:size-4'  /> 
+												<span >Service Providers</span>
 											</Link>
 										</li>
 										<li>
-											<Link to='/workers' className='text-neutral flex items-center '>
-												<BicepsFlexed className='mr-2' size={16} />
-												<span className='text-sm'>Workers Providers</span> 
+											<Link to='/workers' className='text-neutral flex items-center whitespace-nowrap'>
+												<BicepsFlexed className='mr-2 sm:size-4'  />
+												<span >Workers Providers</span> 
 											</Link>
 										</li>
 										<li>
-											<Link to={`/profile/${authUser._id}`} className='text-neutral flex items-center '>
-												<User className='mr-2' size={16} />
-												<span className='text-sm'>My Profile</span> 
+											<Link to={`/profile/${authUser._id}`} className='text-neutral flex items-center whitespace-nowrap'>
+												<User className='mr-2 sm:size-4'  />
+												<span >My Profile</span> 
 											</Link>
 										</li>
 										<div className="divider"></div>
 										<li><button
-									className='flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800'
+									className='flex items-center space-x-1 mb-3 text-gray-600 hover:text-gray-800'
 									onClick={() => logout()}
 								>
-									<LogOut size={16} />
+									<LogOut className="sm:size-4" />
 									<span className=''>Logout</span>
 								</button></li>
 									</ul>

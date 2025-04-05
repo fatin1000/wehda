@@ -40,7 +40,7 @@ const Network = () => {
     <Dashboardlayout>
 		<div className='flex-1 overflow-auto relative py-6 px-4 lg:px-8'>
 			<Header title='Your Network' />
-      <div className="p-4">
+      <div >
 	  {(isLoading) ? (<div className="flex justify-center items-center text-primary"><Loader size={40} className="animate-spin"/></div>) : (isError) ? ( <div>Error loading users</div>) :
                             (isSuccess && network.following.length === 0) ?
                             (
@@ -54,7 +54,7 @@ const Network = () => {
                                 <h3 className="text-gray-500 mb-4">Users You Follow:</h3>
 
                                 {network.following.map((user) => (
-                                    <div key={user._id} className=" flex flex-col items-center gap-4 py-5 px-14 rounded-xl border mb-4 sm:flex-row justify-between bg-white shadow-lg">
+                                    <div key={user._id} className=" flex flex-col items-center gap-4 p-4 sm:py-5 sm:px-14 rounded-xl border mb-4 sm:flex-row justify-between bg-white shadow-lg">
                                         <div className="w-full">
 										<div className="flex flex-col mb-4 sm:flex-row sm:justify-between items-start">
                                         <Link to={`/profile/${user._id}`} className="flex mb-4">
