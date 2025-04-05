@@ -197,7 +197,7 @@ const ScrapRequest = ({ scrap }) => {
 						
 						)}
 			
-			<div className='px-8 py-10'>
+			<div className='p-2 sm:px-8 sm:py-10'>
 			
 				<div className='flex items-center justify-between mb-6'>
 					<div className='flex items-center'>
@@ -243,7 +243,7 @@ const ScrapRequest = ({ scrap }) => {
 				
 				{/* <div className="grid grid-cols-1  gap-x-6 gap-y-8 sm:grid-cols-2"> */}
 					{/* item details */}
-						<div className="bg-white p-8 rounded border-gray-400 my-4 sm:col-span-1">
+						<div className="bg-white rounded border-gray-400 my-4 sm:col-span-1">
 							<div>
 								<img
 									src={scrap.image}
