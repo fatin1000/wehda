@@ -107,6 +107,23 @@ const ScrapRequest = ({ scrap }) => {
 		}
 	};
 
+	const handleShare = async (scrapId, imageURL) => {
+		const scrapURL = `${window.location.origin}/scrap/${scrapId}`;
+	
+		if (navigator.share) {
+			try {
+				await navigator.share({
+					title: "Check this scrap!",
+					text: `Look at this deal I found! 🏷️\n\n${scrapURL}\n📷 Image: ${imageURL}`,
+					url: scrapURL
+				});
+			} catch (error) {
+				console.error("Error sharing:", error);
+			}
+		} else {
+			alert("Sharing is not supported in your browser.");
+		}
+	};
 	//the thind below is for the Scrap form
 	const renderButton = () => {
 		if(scrapResStatus){
@@ -292,7 +309,10 @@ const ScrapRequest = ({ scrap }) => {
 						icon={<MessageCircle size={18} />}
 						text={`Comment (${comments.length})`}
 					/>
-					<PostAction icon={<Share2 size={18} />} text='Share' />
+					<PostAction 
+						icon={<Share2 size={18} />}
+						text='Share'
+						onClick={handleShare(scrap._id,scrap.image)} />
 				</div>
 			</div>
 
