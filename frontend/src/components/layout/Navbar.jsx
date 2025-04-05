@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { Bell, BicepsFlexed, Hammer, LogOut, Plus, User, UserPlus, XCircle } from "lucide-react";
+import { Bell, BicepsFlexed, ChevronDown, ChevronUp, Hammer, LogOut, Plus, User, UserPlus, XCircle } from "lucide-react";
 import warehouse from "../../assets/warehouse.svg";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const {data:authAdmin} = useQuery({queryKey:["authAdmin"]})
 
   const[open, setOpen] = useState(false)
+  const [open2, setOpen2] = useState(false)
 
   const queryClient = useQueryClient();
 
@@ -47,20 +48,41 @@ const Navbar = () => {
 								<Link to="/create-scrap" className='text-sm font-semibold w-full'>
 									<button className="btn bg-primary text-white"><Plus size={18} strokeWidth={3} /> Scrap</button>
 								</Link>
-								<Link to='/services' className='btn bg-white text-neutral border border-gray-400'>
-												<span >Services</span>
+								<div className="relative">
+								<button className="btn bg-white text-neutral flex gap-1 flex-nowrap shadow-none border-none whitespace-nowrap" onClick={() => {setOpen2(!open2);setOpen(false)}} type="button">
+									<span>Services\Workers</span>{!open2 ?<ChevronDown /> : <ChevronUp />}
+								</button>
+								{open2 &&
+								 <ul className="absolute top-15  bg-white px-4 py-6 rounded shadow">
+									<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
+									<Link to='/services' className='text-neutral flex items-center whitespace-nowrap '
+									onClick={() => setOpen2(false)}
+									>
+									<Hammer className='mr-2 sm:size-4'  /> 
+									<span >Service Providers</span>
+									</Link>
+									</li>
+								<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
+								<Link to='/workers' className='text-neutral flex items-center whitespace-nowrap '
+								onClick={() => setOpen2(false)}
+								>
+									<BicepsFlexed className='mr-2 sm:size-4'  />
+									<span >Workers Providers</span> 
 								</Link>
+								</li>
 								
+								</ul>}
+								</div>
 								<Link to="/depot" className='text-neutral flex flex-col items-center mx-3'>
 									<img src={warehouse} alt="" className="h-5" />
 									<span className='text-xs '>Home</span>
 								</Link>
 
-								  <details className="dropdown cursor-pointer ">
-									{open ? <summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(false)}>
+								<div className="relative">
+									{open ? <button className=" text-neutral flex flex-col items-center" onClick={() => setOpen(false)}>
 										<XCircle size={25} />
-										</summary> :
-									<summary className=" text-neutral flex flex-col items-center" onClick={() => setOpen(true)}>
+										</button> :
+									<button className=" text-neutral flex flex-col items-center" onClick={() => {setOpen(true);setOpen2(false)}}>
 									<User size={25} />
 									<span className='text-xs font-normal'>Me</span>
 										{unreadNotificationCount > 0 && (<span
@@ -69,19 +91,16 @@ const Navbar = () => {
 												>
 													{unreadNotificationCount}
 												</span>)}
-									</summary>}
-									<ul className="menu dropdown-content bg-base-100 rounded-b z-1  p-2 shadow end-0 mt-3 text-lg sm:text-base"
-										onClick={(e) => {
-											const details = e.currentTarget.closest("details");
-											if (details) {
-											  details.open = false; // إغلاق القائمة
-											  setOpen(false)
-											}
-										  }}
+									</button>}
+									{open &&
+									 <ul className="absolute -top-20px bg-base-100 rounded-b z-1  py-6 px-2 shadow end-0 mt-3 text-lg sm:text-base"
+										
 									>
 										
-										<li>
-											<Link to='/notifications' className='text-neutral flex items-center whitespace-nowrap'>
+										<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
+											<Link to='/notifications' className='text-neutral flex items-center whitespace-nowrap'
+											onClick={() => setOpen(false)}
+											>
 												<Bell className="sm:size-4" />
 												<span >Notifications</span>
 												{unreadNotificationCount > 0 && (
@@ -94,41 +113,33 @@ const Navbar = () => {
 												)}
 											</Link>
 										</li>
-										<li>
-											<Link to="/dashboard" className='text-neutral flex items-center whitespace-nowrap '>
+										<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
+											<Link to="/dashboard" className='text-neutral flex items-center whitespace-nowrap '
+											onClick={() => setOpen(false)}
+											>
 												<UserPlus className='mr-2 sm:size-4'  />
 												<span > My Dashboard </span>
 											</Link>
 										</li>
-										<li>
-											<Link to='/services' className='text-neutral flex items-center whitespace-nowrap'>
-												<Hammer className='mr-2 sm:size-4'  /> 
-												<span >Service Providers</span>
-											</Link>
-										</li>
-										<li>
-											<Link to='/workers' className='text-neutral flex items-center whitespace-nowrap'>
-												<BicepsFlexed className='mr-2 sm:size-4'  />
-												<span >Workers Providers</span> 
-											</Link>
-										</li>
-										<li>
-											<Link to={`/profile/${authUser._id}`} className='text-neutral flex items-center whitespace-nowrap'>
+										<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
+											<Link to={`/profile/${authUser._id}`} className='text-neutral flex items-center whitespace-nowrap'
+											onClick={() => setOpen(false)}
+											>
 												<User className='mr-2 sm:size-4'  />
 												<span >My Profile</span> 
 											</Link>
 										</li>
 										<div className="divider"></div>
-										<li><button
+										<li className=" px-6 py-2 hover:bg-gray-100 rounded ">
+											<button
 									className='flex items-center space-x-1 mb-3 text-gray-600 hover:text-gray-800'
 									onClick={() => logout()}
 								>
 									<LogOut className="sm:size-4" />
 									<span className=''>Logout</span>
 								</button></li>
-									</ul>
-								</details>
-								
+									</ul>}
+									</div>
 							</>
 						) : (
 							<>

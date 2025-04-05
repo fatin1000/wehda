@@ -221,7 +221,7 @@ const ScrapRequest = ({ scrap }) => {
 					</div>
 					<div>
 						{!isOwner && (
-							<div className="flex justify-end gap-2">
+							<div className="flex justify-end gap-2 mb-2 sm:mb-4">
 									{scrap.scrapStatus === "open" ? 
 									<div className="flex justify-end gap-2"><span className="text bg-green-200 text-green-600 rounded-full px-4 py-2">Open</span></div> : <div className="flex justify-end gap-2"><span className="text-xs bg-red-200 text-red-600 rounded-full p-2">Expired</span></div>}
 							</div>

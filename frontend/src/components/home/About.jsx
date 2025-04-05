@@ -1,5 +1,5 @@
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
-import photo from '../../assets/3.jpg'
+import photo from '../../assets/4.jpg'
 
 const features = [
   {
@@ -50,7 +50,6 @@ export default function About() {
           </div>
           <img
             alt="Product screenshot"
-            // src="https://tailwindui.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
             src={photo}
             width={2432}
             height={1442}
