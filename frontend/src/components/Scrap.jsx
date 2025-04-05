@@ -189,8 +189,8 @@ const Scrap = ({ scrap }) => {
 		<div key={scrap._id} className='bg-white rounded-lg shadow mb-4'  >
 			{isOwner && (
 				<div className="flex justify-end gap-2">
-						<button onClick={handleDeleteScrap} className='text-xs bg-red-600 text-white rounded p-2 hover:bg-red-700'>
-							{isDeletingScrap ? <Loader size={18} className='animate-spin' /> : <Trash2 size={15} />}
+						<button onClick={handleDeleteScrap} className='text-xs text-red-600 p-2  hover:text-red-700'>
+							{isDeletingScrap ? <Loader size={18} className='animate-spin' /> : <Trash2 size={20} />}
 						</button>
 				</div>	)}
 
