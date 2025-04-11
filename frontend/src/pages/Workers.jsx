@@ -3,6 +3,7 @@ import { axiosInstance } from "../lib/axios";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Building, Loader, Mail, Phone } from "lucide-react";
 
 const fetchUsers = async (city) => {
     const res = await axiosInstance.get(`/users/workers/${city}`);
@@ -52,7 +53,7 @@ const Workers = () => {
                 <p className="text-gray-500">Here you can find the best Workers providers,with ...</p>
 
                 
-                <form className='col-span-1 mt-7 px-14 py-5 lg:col-span-3'>
+                <form className='col-span-1 mt-7 md:px-14 py-5 lg:col-span-3'>
                     <div className='flex items-center gap-4 mb-4'>
                         <label htmlFor='city' className="text-gray-500 w-[100px]">The City</label>
                         <select
@@ -74,10 +75,10 @@ const Workers = () => {
                 {/* the services providers */}
                 <div className='col-span-1 mt-7 lg:col-span-3'>
                     
-                    {(isLoading) ? (<div>Loading...</div>) : (isError) ? ( <div>Error loading users</div>) :
+                    {(isLoading) ? (<div className="flex justify-center w-full"><Loader className="animate-spin text-primary" size={40} /></div>) : (isError) ? ( <div>Error loading Users</div>) :
                             (DBservices[0] === "start") ? null :
                             (isSuccess && DBservices?.length === 0) ?
-                            (<div className="flex justify-center">Obbbbs,It like there is No User provider Workers in {city} 😓</div>)
+                            (<div className="flex justify-center">Obbbbs,It like there is No Workers provider Workers in {city} 😓</div>)
                             :(
                             <div>
                                 <h3 className="text-2xl font-semibold mb-1">Workers Providers</h3>
@@ -85,7 +86,7 @@ const Workers = () => {
 
                                 {DBservices.map((user) => (
                                     (user._id === authUser._id) ? null :
-                                    (<div key={user._id} className="flex flex-col items-center gap-4 bg-white py-5 px-14 rounded border mb-4 sm:flex-row justify-between">
+                                    (<div key={user._id} className="flex flex-col md:items-center gap-4 p-4 bg-white md:py-5 md:px-14 rounded-md shadow-md border mb-4 md:flex-row md:justify-between">
                                         <div>
                                         <Link to={`/profile/${user._id}`} className="flex items-center gap-2 mb-6">
                                         <img
@@ -98,14 +99,24 @@ const Workers = () => {
                                             <p className="text-gray-500">{user.headline}</p>
                                         </div>
                                         </Link>
-                                        <p>Phone : {user.phone}</p>
-                                        <a href={`mailto:${user.email}`} >Email : <span className="underline">{user.email}</span> </a>
-                                        <p>Company : {user.company}</p>
-                                        {user.services ? (<p>Provide A Worker {user.labor}</p>) : null}
+                                        <p className="flex items-center gap-2">
+                                            <Phone className="text-primary" size={20} /> 
+                                            <span>{user.phone}</span>
+                                        </p>
+                                        <p className="flex items-center gap-2">
+                                        <Mail className="text-primary" size={20} />
+                                        <a href={`mailto:${user.email}`} > <span className="underline">{user.email}</span> </a>
+                                        </p>
+                                        <p className="flex items-center gap-2">
+                                        <Building className="text-primary" size={20} /> <span>{user.company}</span>
+                                        </p>
+                                        {user.services && <p className="mt-4 font-semibold">Provide A Worker {user.labor}</p>}
+                                        {user.laborPayment && <p><span className="text-gray-500">Payment : </span> {user.laborPayment}</p>}
                                         </div>
 
                                         <div>
-                                            services : {user.fields.map((service) => (
+                                            <p className="font-semibold text-primary">services : </p>
+                                            {user.fields.map((service) => (
                                                 <p key={service.label}>{service.value}</p>
                                             ))}
                                         </div>

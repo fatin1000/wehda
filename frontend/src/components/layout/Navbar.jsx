@@ -45,15 +45,15 @@ const Navbar = () => {
 						{authUser ? (
 							<>
 								
-								<Link to="/create-scrap" className='text-sm font-semibold w-full'>
-									<button className="btn bg-primary text-white"><Plus size={18} strokeWidth={3} /> Scrap</button>
+								<Link to="/create-scrap" className='btn bg-primary text-white md:px-6'>
+									<button className="">Scrap</button>
 								</Link>
 								<div className="relative">
-								<button className="btn bg-white text-neutral flex gap-1 flex-nowrap shadow-none border-none whitespace-nowrap" onClick={() => {setOpen2(!open2);setOpen(false)}} type="button">
-									<span>Services\Workers</span>{!open2 ?<ChevronDown /> : <ChevronUp />}
+								<button className="btn bg-white text-neutral flex gap-1 flex-nowrap shadow-none border-none whitespace-nowrap hover:bg-white" onClick={() => {setOpen2(!open2);setOpen(false)}} type="button">
+									<span>Services</span>{!open2 ?<ChevronDown /> : <ChevronUp />}
 								</button>
 								{open2 &&
-								 <ul className="absolute top-15  bg-white px-4 py-6 rounded shadow">
+								 <ul className="absolute top-15 right-0  bg-white px-4 py-6 rounded shadow">
 									<li className="mb-4 px-6 py-2 hover:bg-gray-100 rounded ">
 									<Link to='/services' className='text-neutral flex items-center whitespace-nowrap '
 									onClick={() => setOpen2(false)}

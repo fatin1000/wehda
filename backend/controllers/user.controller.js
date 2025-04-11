@@ -219,7 +219,7 @@ export const getWorkers = async (req, res) => {
     try {
         const { city } = req.params;
         const location = city.toString();
-        const users = await User.find({ location , services: true }).select("username headline services phone email company fields labor profilePic");
+        const users = await User.find({ location , services: true }).select("username headline services phone email company fields labor profilePic laborPayment");
 
         if (!users) return res.status(404).json({ error: "There are no users in this city" });
 

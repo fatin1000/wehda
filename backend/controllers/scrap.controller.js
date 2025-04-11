@@ -257,7 +257,8 @@ export const getScrapById = async(req,res)=>{
         const scrapId = req.params.id
         const scrap = await Scrap.findById(scrapId)
         .populate("author", "username profilePic headline")
-			.populate("comments.user", "username profilePic headline");
+			.populate("comments.user", "username profilePic headline")
+            .populate("deal");
 
         if (!scrap) {
             return res.status(404).json({ message: "Scrap not found" });

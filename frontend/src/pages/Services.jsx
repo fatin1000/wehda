@@ -54,7 +54,7 @@ const Services = () => {
                 <p className="text-gray-500">Here you can find the best services for you,with ...</p>
 
                 
-                <form className='col-span-1 mt-7 px-14 py-5 lg:col-span-3'>
+                <form className='col-span-1 mt-7 md:px-14 py-5 lg:col-span-3'>
                     <div className='flex items-center gap-4 mb-4'>
                         <label htmlFor='service' className="text-gray-500 w-[100px]">The Service</label>
                         <select

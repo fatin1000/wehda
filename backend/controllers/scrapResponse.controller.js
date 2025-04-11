@@ -62,20 +62,15 @@ export const getUserScrapResponses = async (req, res) => {
 }};
 
 export const getMyScrapResponses = async (req, res) => {
-    try {
-        const userId = req.user._id;
-        const userScrapResponsArr = await ScrapResponse.find({recipient : userId })
-		.populate("scrap", "itemName")
-		.populate("sender", "username  profilePic");
-        if(userScrapResponsArr){
-            res.status(200).json(userScrapResponsArr);
-        }else{
-            return [];
-        }
-    }catch(err){
-        console.error("Error in getUserScrapResponse controller:", err);
+	const scrapId = req.params.scrapId
+	try {
+		const scrapRes = await ScrapResponse.find({scrap: scrapId}).populate("sender", "username profilePic");
+		res.status(200).json(scrapRes)
+	}catch(err){
+		console.error("Error in getMyScrapResponse controller:", err);
 		res.status(500).json({ message: "Server error" });
-}};
+	}
+   };
 
 
 export const getScrapResStatus = async (req,res) =>{

@@ -29,6 +29,7 @@ import Mail from "./admin/Mail";
 import Msg from "./admin/components/Msg";
 import AdminLoginPage from "./admin/auth/AdminLoginPage";
 import NotFound from "./pages/NotFound";
+import ScrapRes from "./components/dashboard/components/common/ScrapRes";
 
 function App() {
 	const navigate = useNavigate();
@@ -90,6 +91,7 @@ function App() {
 					<Route path='likes' element={activeUser ? <MyLikes /> : <Navigate to={"/login"} />} />
 					<Route path='network' element={activeUser ? <Network /> : <Navigate to={"/login"} />} />
 					<Route path='settings' element={activeUser ? <SettingsPage /> : <Navigate to={"/login"} />} />
+					<Route path='scrap/:scrapId' element={activeUser ? <ScrapRes /> : <Navigate to={"/login"} />} />
 				</Route>
 				<Route  path="/services" element={activeUser ? <Services /> : <Navigate to={"/login"} />}/>
 				<Route  path="/workers" element={activeUser ? <Workers /> : <Navigate to={"/login"} />}/>

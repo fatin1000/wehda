@@ -10,7 +10,7 @@ router.put("/reject/:requestId", protectRoute, rejectScrapResponse);
 //get the scrap responses related to the authUser
 router.get("/myScrapResponses", protectRoute, getUserScrapResponses); // i was sended
 //sendedScrapResponses
-router.get("/sendedScrapResponses", protectRoute, getMyScrapResponses); //sended for me
+router.get("/sendedScrapResponses/:scrapId", protectRoute, getMyScrapResponses); //sended for me
 router.get("/status/:scrapId", protectRoute, getScrapResStatus);
 //get all responses for a scrap
 //router.get("/:scrapId", protectRoute, getScrapResponses);

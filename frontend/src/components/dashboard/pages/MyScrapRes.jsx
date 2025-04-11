@@ -27,82 +27,55 @@ const MyScrapRes = () => {
 						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 "> Make Some Now</Link>
 					</div>
 				): (
-			<div className='w-[100%] flex  rounded-lg border border-gray-300 p-2 overflow-x-auto lg:overflow-x-hidden'>
-				<table className='table-auto bg-white rounded w-full overflow-x-auto p-3'>
-					<thead className="text-gray-500">
-						<tr>
-							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-								Item
-							</th>
-							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-								User
-							</th>
-							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-								Quentity
-							</th>
-							<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-								Price
-							</th>
-							<th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
-								Status
-							</th>
-						</tr>
-					</thead>
-
-					<tbody className='divide-y divide-gray-700'>
-						{ scrapResLoading ? <div><Loader className="animate-spin" />Loading...</div> : scrapResponse.map((e) => (
-							<tr key={e._id}>
-								<td className='px-6 py-4 whitespace-nowrap'>
-									<div className="flex items-center gap-1 flex-wrap">
-									<div className="flex-shrink-0">
-								<img src={e.scrap.image} alt={e.scrap.itemName.value} className='w-10 h-10 rounded' />
-								</div>
-									<Link to={`/scrap/${e.scrap._id}`} className='font-medium text-orange-500'>
+			<div>
+			{ scrapResLoading ? <div><Loader className="animate-spin" />Loading...</div> :
+						 scrapResponse.map((e) => (
+								<div key={e._id} className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 flex-wrap p-4 border rounded-lg shadow-md mb-4">
+									<div className="flex flex-col gap-2 md:flex-row">
+									<div className="flex-shrink-0  md:size-40">
+										<img src={e.scrap.image} alt={e.scrap.itemName.value} className='rounded size-full' />
+									</div>
+									<div >
+									<Link to={`/scrap/${e.scrap._id}`} className='font-medium text-orange-500 md:text-2xl'>
 										{e.scrap.itemName.value}
 									</Link>
-									</div>
-								</td>
-								<td className='px-6 py-4 whitespace-nowrap'>
-									<Link to={`/profile/${e.recipient._id}`} className='flex items-center gap-1 flex-wrap'>
-										<div className='flex-shrink-0 h-10 w-10'>
-											<div className='h-10 w-10 rounded-full overflow-hidden'>
-												<img src={e.recipient.profilePic ? e.recipient.profilePic : "/avatar.png"} alt={e.recipient.username} />
+									<div className="my-2">
+										<Link to={`/profile/${e.recipient._id}`} className='flex items-center gap-1 flex-wrap'>
+											<div className='flex-shrink-0 h-10 w-10'>
+												<div className='size-8 rounded-full overflow-hidden'>
+													<img src={e.recipient.profilePic ? e.recipient.profilePic : "/avatar.png"} alt={e.recipient.username} />
+												</div>
 											</div>
-										</div>
 											<div className='font-medium'>{e.recipient.username}</div>
-										
-									</Link>
-								</td>
-
-								
-								<td className='px-6 py-4 whitespace-nowrap'>
+										</Link>
+									</div>
+									<div className="flex flex-col gap-2 md:flex-row">
+									<div className="flex items-center">
+									<p className="text-gray-500">Quentity : </p>
 									<span className='px-2 inline-flex  leading-5 font-semibold '>
 										{e.quantity}
 									</span>
-								</td>
-
-								<td className='px-6 py-4 '>
-									<span className='px-2 inline-flex leading-5 font-semibold'>
+									</div>
+									<div className="flex items-center">
+									<p className="text-gray-500">Price : </p>
+									<span className='px-2 inline-flex  leading-5 font-semibold '>
 										{e.price} SR
 									</span>
-								</td>
-
-								<td className='px-6 py-4 whitespace-nowrap'>
+									</div>
+									</div>
+									</div>
+									</div>
 									<span
-										className={`px-3 py-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+										className={`px-3 py-2 text-xs leading-5 font-semibold rounded-full text-center ${
 											e.status === "accepted" ? "bg-green-600 text-green-100"
 											: e.status === "pending" ? "bg-yellow-500 text-yellow-100" : "bg-red-800 text-red-100"
 										}`}
 									>
 										{e.status}
 									</span>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
+								</div>
+						 ))}
 			</div>
-		
         )}
 
 				
