@@ -10,5 +10,6 @@ export const whitelist = [
     "Ali.gamal201298@yahoo.com",
     "Mohammed.engr7@gmail.com",
     "eng.asuliman12@gmail.com",
-    "hind@gmail.com"
+    "hind@gmail.com",
+    "abuzr@wehda.io"
 ];
