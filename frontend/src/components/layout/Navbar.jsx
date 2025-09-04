@@ -155,12 +155,12 @@ const Navbar = () => {
 										</ul>}
 								</div>
 								{i18n.language === 'ar' ? (
-									<button type="button" onClick={() => i18n.changeLanguage('en')} className="flex items-center gap-1">
+									<button type="button" onClick={() => i18n.changeLanguage('en')} className="flex flex-col items-center gap-1">
 										<Globe className="text-xl text-gray-700 hover:text-primary transition" />
 										<span className="text-sm">EN</span>
 									</button>
 								) : (
-									<button type="button" onClick={() => i18n.changeLanguage('ar')} className="flex items-center gap-1">
+									<button type="button" onClick={() => i18n.changeLanguage('ar')} className="flex flex-col items-center gap-1">
 										<Globe className="text-xl text-gray-700 hover:text-primary transition" />
 										<span className="text-sm">AR</span>
 									</button>
@@ -186,12 +186,12 @@ const Navbar = () => {
 									</>
 								}
 								{ i18n.language === 'ar' ? (
-  <button type="button" onClick={() => i18n.changeLanguage('en')} className="flex items-center gap-1">
+  <button type="button" onClick={() => i18n.changeLanguage('en')} className="flex flex-col items-center gap-1">
     <Globe className="text-xl text-gray-700 hover:text-primary transition" />
     <span className="text-sm">EN</span>
   </button>
 ) : (
-  <button type="button" onClick={() => i18n.changeLanguage('ar')} className="flex items-center gap-1">
+  <button type="button" onClick={() => i18n.changeLanguage('ar')} className="flex flex-col items-center gap-1">
     <Globe className="text-xl text-gray-700 hover:text-primary transition" />
     <span className="text-sm">AR</span>
   </button>
