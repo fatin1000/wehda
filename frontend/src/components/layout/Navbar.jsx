@@ -172,8 +172,9 @@ const Navbar = () => {
 								{authAdmin ? <Link to='/admin' className='btn bg-primary text-white'>Admin</Link> :
 									<>
 										<Link to="/depot" className='text-neutral flex flex-col items-center'>
-											<img src={warehouse} alt="" className="h-5" />
-											<span className='text-xs '>{t("navbar.Home")}</span>
+											{/* <img src={warehouse} alt="" className="h-5" /> */}
+											 <Store />
+											<span className='hidden md:block md:text-xs'>{t("navbar.Home")}</span>
 										</Link>
 
 										<Link to='/login' className='btn btn-ghost'>
