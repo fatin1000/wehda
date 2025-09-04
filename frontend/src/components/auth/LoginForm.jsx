@@ -39,7 +39,7 @@ const LoginForm = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            className="block w-full rounded-md bg-white px-3 py-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
         </div>
       </div>
@@ -49,11 +49,11 @@ const LoginForm = () => {
           <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
             {t("auth.password")}
           </label>
-          <div className="text-sm">
+          {/* <div className="text-sm">
             <a href="#" className="font-semibold text-primary">
               {t("auth.forgotPassword")}
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="mt-2">
           <input
@@ -62,7 +62,7 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            className="block w-full rounded-md bg-white px-3 py-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ const LoginForm = () => {
       <div>
         <button
           type="submit"
-          className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm btn-hover"
+          className="flex w-full justify-center rounded-md bg-primary px-3 py-3 text-sm/6 font-semibold text-white shadow-sm btn-hover"
         >
           {isPending ? <Loader className='size-5 animate-spin' /> : t("auth.login")}
         </button>

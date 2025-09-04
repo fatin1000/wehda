@@ -1,12 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { Bell, BicepsFlexed, ChevronDown, ChevronUp, ClipboardPlus, Globe, Hammer, LogOut, PackagePlus, Pickaxe, Plus, Store, User, UserPlus, Wrench, XCircle } from "lucide-react";
+import { Bell, BicepsFlexed, ChevronDown, ChevronUp,  Globe, Hammer, LogIn, LogOut, PackagePlus, Store, User, UserPlus, Wrench, XCircle } from "lucide-react";
 import warehouse from "../../assets/warehouse.svg";
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { Languages } from "lucide-react";
-import i18n from '../../i18n'
 import { useEffect } from "react"
 
 
@@ -179,7 +177,8 @@ const Navbar = () => {
 										</Link>
 
 										<Link to='/login' className='btn btn-ghost'>
-											{t("navbar.SignIn")}
+											<span className="hidden md:block">{t("navbar.SignIn")}</span>
+											<span className="md:hidden"><LogIn /></span>
 										</Link>
 										<Link to='/signup' className='btn btn-primary'>
 											{t("navbar.SignUp")}

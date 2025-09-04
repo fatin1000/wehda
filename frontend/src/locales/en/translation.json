@@ -86,7 +86,9 @@
         "permanentAddress": "Use a permanent address where you can receive mail.",
         "record":"Commercial Record",
         "uploadRecord":"Upload Commercial Record (PDF or Image)",
-        "uploaded":" ✅ Uploaded:"
+        "uploaded":" ✅ Uploaded:",
+        "noAccount": "You don&apos;t have an account?",
+        "createAccount": "Create One Now for Free"
     },
     "scrap": {
         "createSuccess": "Scrap created successfully",

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import LoginForm from "../../components/auth/LoginForm"
+import { useTranslation } from 'react-i18next';
 export default function LoginPage() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +13,7 @@ export default function LoginPage() {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            {t("auth.login")}
           </h2>
         </div>
 
@@ -19,9 +21,9 @@ export default function LoginPage() {
           <LoginForm />
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            You don&apos;t have an account?{' '}
+            {t("auth.noAccount") }{' '}
             <Link to={'/signup'} className="font-semibold text-primary ">
-              Create one NOW for free
+              {t("auth.createAccount")}
             </Link>
           </p>
         </div>
