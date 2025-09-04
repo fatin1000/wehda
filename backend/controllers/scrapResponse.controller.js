@@ -52,7 +52,7 @@ export const getUserScrapResponses = async (req, res) => {
         const userId = req.user._id;
         const userScrapResponsArr = await ScrapResponse.find({sender : userId }).populate("scrap" , "itemName image").populate("recipient", "username profilePic");
         if(userScrapResponsArr){
-            res.status(200).json(userScrapResponsArr);
+            res.status(200).json(userScrapResponsArr.reverse());
         }else{
             return null
         }

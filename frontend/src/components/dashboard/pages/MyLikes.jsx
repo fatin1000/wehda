@@ -5,8 +5,10 @@ import { axiosInstance } from "../../../lib/axios";
 import { Loader, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const MyLikes = () => {
+import { useTranslation } from 'react-i18next';
 
+const MyLikes = () => {
+	const { t } = useTranslation();
   const queryClient = useQueryClient();
 
 const { data: myLikedScraps , isLoading: myLikedScrapsLoading, isError: myLikedScrapsError,isSuccess: myLikedScrapsSuccess } = useQuery({
@@ -33,7 +35,7 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
   return (
     <Dashboardlayout>
 		<div className='flex flex-col min-h-screen py-6 px-4 lg:px-8'>
-			<Header title='The Items that you Like' />
+			<Header title={t('dashboard.likedScraps.title')} />
 
 			{myLikedScrapsLoading && (
 				<div className="flex flex-col items-center mt-10 text-primary">
@@ -44,8 +46,8 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 				<div>Error</div>
 			): !myLikedScrapsLoading && myLikedScrapsArr?.length === 0 ? (
 				<div className="flex flex-col items-center mt-10">
-						<p className="text-center text-2xl text-gray-500 font-semibold">You have not liked any Scraps yet 🥱!</p>
-						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 "> Make Some Now</Link>
+						<p className="text-center text-2xl text-gray-500 font-semibold">{t('dashboard.likedScraps.empty')}</p>
+						<Link to="/depot" className="bg-primary text-white py-3 px-9 rounded text-center mt-10 font-semibold hover:bg-orange-700 ">{t('dashboard.likedScraps.makeOneNow')}</Link>
 					</div>
 			): myLikedScrapsSuccess && (
 				<>
@@ -54,22 +56,22 @@ const myLikedScrapsArr = myLikedScrapsLoading ? [] : myLikedScraps.likedScraps;
 				<thead>
 					<tr>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-							Item
+							{t('dashboard.likedScraps.item')}
 						</th>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-							User
+							{t('dashboard.likedScraps.user')}
 						</th>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-							Quentity
+							{t('dashboard.likedScraps.quantity')}
 						</th>
 						<th className='px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider'>
-							Unit Price
+							{t('dashboard.likedScraps.price')}
 						</th>
 						<th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
-							Status
+							{t('dashboard.likedScraps.status')}
 						</th>
 						<th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
-							Remove
+							{t('dashboard.likedScraps.remove')}
 						</th>
 					</tr>
 				</thead>

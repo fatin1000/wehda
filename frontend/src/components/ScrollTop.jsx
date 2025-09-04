@@ -1,7 +1,9 @@
 import { ChevronUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 const ScrollTop = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -30,6 +32,7 @@ const ScrollTop = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-5 right-5 bg-gray-300 rounded-full p-3 shadow-lg hover:bg-orange-500 transition duration-300"
+          title={t("common.scrollToTop")}
         >
           <ChevronUp />
         </button>

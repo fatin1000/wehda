@@ -8,8 +8,10 @@ import { Calendar, CircleX, Clock, Loader, MapPin, MessageCircle, PartyPopper, S
 import { formatDistanceToNow } from "date-fns";
 
 import PostAction from "./PostAction";
+import { useTranslation } from "react-i18next";
 
 const Scrap = ({ scrap }) => {
+	const { t } = useTranslation();
 	const { scrapId } = useParams();
 	const navigate = useNavigate();
 
@@ -125,11 +127,11 @@ const Scrap = ({ scrap }) => {
 	};
 
 	const renderButton = () => {
-		if(scrapResStatus){
-			if(scrapResStatusLoading){
+		if (scrapResStatus) {
+			if (scrapResStatusLoading) {
 				return (
 					<button className='btn px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-500' disabled>
-						Loading...
+						{t("loading")}
 					</button>
 				);
 			}
@@ -137,48 +139,47 @@ const Scrap = ({ scrap }) => {
 				case "pending":
 					return (
 						<div className="m-4 bg-yellow-100 text-yellow-700 p-4 rounded-full flex flex-col items-center">
-							<p className="flex justify-center items-center gap-2 font-semibold"><Clock size={20} /> Pending </p>
-							<p>👏 you send an Deal</p>
+							<p className="flex justify-center items-center gap-2 font-semibold"><Clock size={20} /> {t("status.pending")}</p>
+							<p>{t("message.pending")}</p>
 						</div>
 					);
 				case "accepted":
 					return (
 						<div>
-						<div className="m-4 bg-green-100 text-green-600 p-4 rounded-full flex flex-col items-center">
-						<p className="flex justify-center items-center gap-2 font-semibold"><PartyPopper size={20} />  Accepted </p>
-						<p>you Deal Accepted</p>
-						</div>
-						<p className="text-gray-500 text-sm">you can send new one</p>
-						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
+							<div className="m-4 bg-green-100 text-green-600 p-4 rounded-full flex flex-col items-center">
+								<p className="flex justify-center items-center gap-2 font-semibold"><PartyPopper size={20} /> {t("status.accepted")}</p>
+								<p>{t("message.accepted")}</p>
+							</div>
+							<p className="text-gray-500 text-sm">{t("action.sendNew")}</p>
+							<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">{t("action.makeDeal")}</Link>
 						</div>
 					);
 				case "rejected":
 					return (
 						<div>
-						<div className="m-4 bg-red-100 text-red-600 p-4 rounded-full flex flex-col items-center">
-							<p className="flex justify-center items-center gap-2 font-semibold"><CircleX size={20} /> Rejected </p>
-							<p className="">😓 you Deal has been Rejected</p>
-						</div>
-						<p className="text-gray-500 text-sm">you can send new one</p>
-						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
+							<div className="m-4 bg-red-100 text-red-600 p-4 rounded-full flex flex-col items-center">
+								<p className="flex justify-center items-center gap-2 font-semibold"><CircleX size={20} /> {t("status.rejected")}</p>
+								<p>{t("message.rejected")}</p>
+							</div>
+							<p className="text-gray-500 text-sm">{t("action.sendNew")}</p>
+							<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">{t("action.makeDeal")}</Link>
 						</div>
 					);
 				case "auto Rejected":
 					return (
 						<div className="m-4 bg-gray-400 text-gray-900 p-4 rounded-full flex flex-col items-center">
-							<p className="flex justify-center items-center gap-2 font-semibold"><CircleX size={20} />Auto Reject </p>
-							<p className="">😓 you Deal has been Auto Rejected because the quantity is end</p>
+							<p className="flex justify-center items-center gap-2 font-semibold"><CircleX size={20} /> {t("status.autoRejected")}</p>
+							<p>{t("message.autoRejected")}</p>
 						</div>
 					);
 				default:
 					return (
-					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
+						<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">{t("action.makeDeal")}</Link>
 					);
-					
 			}
-		}else{
+		} else {
 			return (
-					<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">Make Deal</Link>
+				<Link to={`/scrap/${scrap._id}`} className="btn btn-primary mt-4 px-4 py-2 mb-4 w-full">{t("action.makeDeal")}</Link>
 			);
 		}
 	};
@@ -197,7 +198,14 @@ const Scrap = ({ scrap }) => {
 			{!isOwner && (
 				<div className="flex justify-end gap-2">
 						{scrap.scrapStatus === "open" ? 
-						<div className="flex justify-end gap-2"><span className="text-xs bg-green-600 text-white rounded-bl-lg p-2">Open</span></div> : <div className="flex justify-end gap-2"><span className="text-xs bg-red-600 text-white rounded-bl-lg p-2">Expired</span></div>}
+							<div className="flex justify-end gap-2">
+								<span className="text-xs bg-green-600 text-white rounded-bl-lg p-2">{t("status.open")}</span>
+							</div> 
+							: 
+							<div className="flex justify-end gap-2">
+								<span className="text-xs bg-red-600 text-white rounded-bl-lg p-2">{t("status.expired")}</span>
+							</div>
+						}
 				</div>
 			)}
 			<div className='p-8'>
@@ -215,7 +223,7 @@ const Scrap = ({ scrap }) => {
 							<Link to={`/profile/${scrap?.author?._id}`}>
 								<h3 className='font-semibold'>{scrap.author.username}</h3>
 							</Link>
-							<p className='text-xs text-gray-500'>{scrap.author.headline}</p>
+							<p className='text-xs text-gray-500'>{t(`auth.${(scrap.author.headline)}`)}</p>
 							
 						</div>
 					</div>
@@ -224,7 +232,7 @@ const Scrap = ({ scrap }) => {
 						<Calendar size={15} />{formatDistanceToNow(new Date(scrap.createdAt), { addSuffix: true })}
 						</p>
 						<p className="text-gray-500 mt-1 text-sm flex items-center gap-1">
-						<MapPin size={15} />{scrap.location}
+						<MapPin size={15} />{t(`cities.${scrap.location}`)}
 						</p>
 						
 					</div>
@@ -238,24 +246,42 @@ const Scrap = ({ scrap }) => {
 						onClick={() => navigate(`/scrap/${scrap._id}`)}
 					/>
 				</div>}
-                <p className="text-sm mb-2 text-gray-500 mt-2">{scrap.category}</p>
-				<h3 className="font-bold mb-2 text-primary ms-2 sm:text-lg cursor-pointer" onClick={() => navigate(`/scrap/${scrap._id}`)}>{scrap.itemName.value}</h3>
+                <p className="text-sm mb-2 text-gray-500 mt-2">{t(`categories.${scrap.category}`)}</p>
+				<h3 className="font-bold mb-2 text-primary ms-2 sm:text-lg cursor-pointer" onClick={() => navigate(`/scrap/${scrap._id}`)}>{t(`items.${scrap.itemName.value}`)}</h3>
 				<div>
-					
-					<p className="text-gray-500 ">Quantity : {scrap.quantity === scrap.oldQuantity ? <span className="text-gray-900 font-semibold">{scrap.quantity}</span> : <span className="text-white font-semibold">{scrap.quantity} <span className=" text-gray-500 font-normal"> left of <span className="font-semibold"> {scrap.oldQuantity}</span></span></span>}{" "}{scrap.units}</p>
-					
-				</div>
+  <p className="text-gray-500">
+    {scrap.quantity === 0 ? (
+      <span className="bg-red-600 font-bold text-white py-1 px-4">{t("label.soldOut")}</span>
+    ) : (
+      <>
+        {t("label.quantity")} :{" "}
+        {scrap.quantity === scrap.oldQuantity ? (
+          <span className="text-gray-900 font-semibold">{scrap.quantity}</span>
+        ) : (
+          <span className="text-white font-semibold">
+            {scrap.quantity}
+            <span className="text-gray-500 font-normal">
+              {" "}{t("label.leftOf")} <span className="font-semibold">{scrap.oldQuantity}</span>
+            </span>
+          </span>
+        )}{" "}
+        {t(`units.${scrap.units}`)}
+      </>
+    )}
+  </p>
+</div>
 				
-				{ scrap.discription && (
-					<div>
-						<p className="mb-2 text-gray-500 inline-block ">Description:</p>
-						<h3 className="mb-2 inline-block text-sm text-gray-300 ms-2 sm:text-lg">{scrap.discription}</h3>
-					</div>
-				)}
+			{ scrap.discription && (
 				<div>
-					<p className="mb-2 text-gray-500 inline-block">Item Status:</p>
-					<p className=" mb-2 inline-block ms-2">{scrap.itemStatus}</p>
+					<p className="mb-2 text-gray-500 inline-block ">{t("label.description")}</p>
+					<h3 className="mb-2 inline-block text-sm text-gray-300 ms-2 sm:text-lg">{scrap.discription}</h3>
 				</div>
+			)}
+
+			<div>
+				<p className="mb-2 text-gray-500 inline-block">{t("label.itemStatus")}</p>
+				<p className=" mb-2 inline-block ms-2">{t(`status.${scrap.itemStatus}`)}</p>
+			</div>
 				{ !isOwner && scrap.scrapStatus === "open" && (
 					renderButton()
 				)}
@@ -264,18 +290,18 @@ const Scrap = ({ scrap }) => {
 				<div className='flex justify-between text-info'>
 					<PostAction
 						icon={<ThumbsUp size={18} className={isLiked ? "text-blue-500  fill-blue-300" : ""} />}
-						text={`Like (${scrap.likes.length})`}
+						text={`${t("action.like")} (${scrap.likes.length})`}
 						onClick={handleLikeScrap}
 					/>
 
 					<PostAction
 						icon={<MessageCircle size={18} />}
-						text={`Comment (${comments.length})`}
+						text={`${t("action.comment")} (${comments.length})`}
 						onClick={() => setShowComments(!showComments)}
 					/>
 					<PostAction
 						 icon={<Share2 size={18} />} 
-						 text='Share' 
+						 text={t("action.share")} 
 						 onClick={() => handleShare(scrap._id)} />
 				</div>
 			</div>
@@ -308,18 +334,18 @@ const Scrap = ({ scrap }) => {
 							type='text'
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
-							placeholder='Add a comment...'
-							className=' flex-grow p-3 rounded-l-full bg-gray-100'
+							placeholder={t("comment.placeholder")}
+							className=' flex-grow p-3 rounded-s-full bg-gray-100'
 						/>
 						<button
 							type='submit'
-							className='bg-primary text-white p-3 rounded-r-full hover:bg-primary-dark transition duration-300'
+							className='bg-primary text-white p-3 rounded-e-full hover:bg-primary-dark transition duration-300'
 							disabled={isAddingComment}
 						>
 							{isAddingComment ? <Loader size={18} className='animate-spin' /> : <Send size={18} />}
 						</button>
 					</form>)}
-					{ !authUser && (<p className='text-sm text-red-500 mt-2 text-center'>Please login to comment</p>)}
+					{ !authUser && (<p className='text-sm text-red-500 mt-2 text-center'>{t("comment.loginRequired")}</p>)}
 				</div>
 			)}
 		</div>

@@ -6,7 +6,10 @@ import { Link} from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { formatDistanceToNow } from "date-fns";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 const NotificationsPage = () => {
+
+	const {t} = useTranslation();
 
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
@@ -42,7 +45,7 @@ const NotificationsPage = () => {
 	});
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			// هنا يمكنك استدعاء الميوتيشن لجعل التنبيهات "read"
+			
 			notifications.data.forEach((notification) => {
 				if (!notification.read) {
 					markAsReadMutation(notification._id);
@@ -50,7 +53,7 @@ const NotificationsPage = () => {
 			});
 		}, 3000);
 	
-		// تنظيف المؤقت عند مغادرة الصفحة
+		
 		return () => clearTimeout(timer);
 	}, [notifications, markAsReadMutation]);
 	
@@ -90,7 +93,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-						Comment in your Item
+						{t("notif.comment")}
 					</span>
 				);
 			case "follow":
@@ -99,7 +102,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-                        Following you now
+                        {t("notif.follow")}
 					</span>
 				);
             case "offer":
@@ -108,7 +111,7 @@ const NotificationsPage = () => {
                         <Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
                             {notification.relatedUser.username}
                         </Link>{" "}
-                        You have a new offer
+                        {t("notif.offer")}
                     </span>
                 );
             case "deal":
@@ -117,7 +120,7 @@ const NotificationsPage = () => {
                         <Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
                             {notification.relatedUser.username}
                         </Link>{" "}
-                        You have a new deal
+                        {t("notif.deal")}
                     </span>
                 );
 			case "offer Accepted":
@@ -126,7 +129,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-						🎉 You Offer has been accepted
+						🎉 {t("notif.offer_Accepted")}
 					</span>
 				);
 			case "offer rejected":
@@ -135,7 +138,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-						You Offer has been rejected
+						{t("notif.offer_rejected")}
 					</span>
 				);
 			case "deal Accepted":
@@ -144,7 +147,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-						 You Deal has been accepted
+						🎉 {t("notif.deal_Accepted")}
 					</span>
 				);
 			case "deal rejected":
@@ -153,7 +156,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser._id}`} className='font-bold'>
 							{notification.relatedUser.username}
 						</Link>{" "}
-						 You Deal has been rejected
+						{t("notif.deal_rejected")}
 					</span>
 				);
 			default:
@@ -166,13 +169,13 @@ const NotificationsPage = () => {
 		return (
 			<Link
 				to={`/scrap/${relatedScrap._id}`}
-				className='mt-2 p-2 bg-gray-50 rounded-md flex items-center space-x-2 hover:bg-gray-100 transition-colors'
+				className='mt-2 p-2 bg-gray-50 rounded-md flex items-center gap-2 hover:bg-gray-100 transition-colors'
 			>
 				{relatedScrap.image && (
 					<img src={ relatedScrap.image } alt='Scrap preview' className='w-10 h-10 object-cover rounded' />
 				)}
-				<div className='flex-1 overflow-hidden'>
-					<p className='text-sm text-gray-600 truncate'>Show Scrap</p>
+				<div className='flex-1 overflow-hidden '>
+					<p className='text-sm text-gray-600 truncate'>{t("notif.show_scrap")}</p>
 				</div>
 				<ExternalLink size={14} className='text-gray-400' />
 			</Link>
@@ -203,7 +206,7 @@ const NotificationsPage = () => {
 									}`}
 								>
 									<div className='flex items-start justify-between'>
-										<div className='flex items-center space-x-4'>
+										<div className='flex items-center gap-4'>
 										<div className='p-3 bg-gray-100 rounded-full'>
 														{renderNotificationIcon(notification.type)}
 													</div>

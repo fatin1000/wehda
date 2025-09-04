@@ -31,7 +31,11 @@ import AdminLoginPage from "./admin/auth/AdminLoginPage";
 import NotFound from "./pages/NotFound";
 import ScrapRes from "./components/dashboard/components/common/ScrapRes";
 
+import './i18n';
+
 function App() {
+
+
 	const navigate = useNavigate();
 	const { data: authUser, isLoading } = useQuery({
 		queryKey: ["authUser"],
@@ -73,6 +77,7 @@ function App() {
 	  navigate("/forbidden")
 	} 
 	console.log(authAdmin)
+	
 	return (
 		<Layout>
 			<Routes>

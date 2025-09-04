@@ -3,20 +3,23 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { Loader, UserPlus} from "lucide-react";
+import { Loader, UserPlus } from "lucide-react";
+import { useTranslation } from 'react-i18next';
+
 
 const RecommendedUser = ({ user }) => {
+	const { t } = useTranslation();
 	const queryClient = useQueryClient();
 
-	const { mutate: follow , isLoading} = useMutation({
+	const { mutate: follow, isLoading } = useMutation({
 		mutationFn: (userId) => axiosInstance.post(`/users/follow/${userId}`),
 		onSuccess: () => {
-			toast.success("Followed successfully");
+			toast.success(t("user.followedSuccessfully"));
 			queryClient.invalidateQueries({ queryKey: ["recommendedUsers"] }),
-			queryClient.invalidateQueries({ queryKey: ["authUser"] })
+				queryClient.invalidateQueries({ queryKey: ["authUser"] })
 		},
 		onError: (error) => {
-			toast.error(error.response?.data?.message || "An error occurred");
+			toast.error(error.response?.data?.message || t("common.somethingWentWrong"));
 		},
 	});
 	return (
@@ -32,10 +35,10 @@ const RecommendedUser = ({ user }) => {
 					<p className='text-xs text-info'>{user.headline}</p>
 				</div>
 			</Link>
-			<button className="flex items-center gap-2" onClick={() => follow(user._id)}> 
-				{isLoading ? <Loader size={20} className="animate-spin"/> : <UserPlus size={20}  className="hover:text-orange-600"/>}
-                  
-            </button>
+			<button className="flex items-center gap-2" onClick={() => follow(user._id)}>
+				{isLoading ? <Loader size={20} className="animate-spin" /> : <UserPlus size={20} className="hover:text-orange-600" />}
+
+			</button>
 		</div>
 	);
 };

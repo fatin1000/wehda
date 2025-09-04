@@ -4,8 +4,10 @@ import { axiosInstance } from '../../lib/axios';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { Loader } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -13,38 +15,39 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const queryClient = useQueryClient();
 
-  const { mutate: mailMutation, isPending} = useMutation({
-		mutationFn: async (data) => {
-			const res = await axiosInstance.post("/admin/mail", data);
-			return res.data;
-		},
-		onSuccess: () => {
-			toast.success("Account created successfully");
-			queryClient.invalidateQueries({ queryKey: ["authUser"] });
+  const { mutate: mailMutation, isPending } = useMutation({
+    mutationFn: async (data) => {
+      const res = await axiosInstance.post("/admin/mail", data);
+      return res.data;
+    },
+    onSuccess: () => {
+      toast.success(t("home.contact.letsTalk"));
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
       resetForm();
-		},
-		onError: (err) => {
-			toast.error(err.response.data.message || "Something went wrong");
-		},
-	});
+    },
+    onError: (err) => {
+      toast.error(err.response.data.message || t("common.somethingWentWrong"));
+    },
+  });
   const resetForm = () => {
-    setName("");setCompany("");setEmail("");setPhone("");setMessage("");
+    setName(""); setCompany(""); setEmail(""); setPhone(""); setMessage("");
   }
-	const handleSendMsg = (e) => {
-		e.preventDefault();
-		mailMutation({ name , company ,email ,phone , message});
-	};
-    return (
+  const handleSendMsg = (e) => {
+    e.preventDefault();
+    mailMutation({ name, company, email, phone, message });
+  };
+  return (
     <div className="isolate bg-img px-6 py-24 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl">Contact</h2>
-        <p className="mt-2 text-lg/8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
+        <h2 className="text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl">{t("home.contact.title")}</h2>
+        {/* <p className="mt-2 text-lg/8 text-gray-600">{t("home.contact.description")}</p> */}
+        <p className='mt-2 text-lg/8 text-gray-600'>Sorry We Are In The Testing Phase, We Will Be Back Soon, Stay Tuned</p>
       </div>
-      <form onSubmit={handleSendMsg}  className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form onSubmit={handleSendMsg} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-              Your name
+              {t("home.contact.yourName")}
             </label>
             <div className="mt-2.5">
               <input
@@ -59,10 +62,10 @@ export default function Contact() {
               />
             </div>
           </div>
-          
+
           <div className="sm:col-span-2">
             <label htmlFor="company" className="block text-sm/6 font-semibold text-gray-900">
-              Company
+              {t("home.contact.company")}
             </label>
             <div className="mt-2.5">
               <input
@@ -79,7 +82,7 @@ export default function Contact() {
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="email" className="block text-sm/6 font-semibold text-gray-900">
-              Email
+              {t("home.contact.email")}
             </label>
             <div className="mt-2.5">
               <input
@@ -96,7 +99,7 @@ export default function Contact() {
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="phone-number" className="block text-sm/6 font-semibold text-gray-900">
-              Phone number
+              {t("home.contact.phoneNumber")}
             </label>
             <div className="mt-2.5">
               <div className="flex rounded-md bg-white border border-gray-300 ">
@@ -131,7 +134,7 @@ export default function Contact() {
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="message" className="block text-sm/6 font-semibold text-gray-900">
-              Message
+              {t("home.contact.message")}
             </label>
             <div className="mt-2.5">
               <textarea
@@ -145,14 +148,14 @@ export default function Contact() {
               />
             </div>
           </div>
-         
+
         </div>
         <div className="mt-10">
           <button
-           type='submit' disabled={isPending}
+            type='submit' disabled={isPending}
             className="block w-full  rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs "
           >
-            {isPending ? <Loader size={20} color='white' visible={isPending} className='mx-auto' />:"Let`s talk"}
+            {isPending ? <Loader size={20} color='white' visible={isPending} className='mx-auto' /> : t("home.contact.letsTalk")}
           </button>
         </div>
       </form>

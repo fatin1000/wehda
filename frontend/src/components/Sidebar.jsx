@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { Home, UserPlus, BicepsFlexed, Hammer } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export default function Sidebar({ user }) {
+	const { t } = useTranslation();
+
 	return (
 		<div className='bg-white rounded-lg shadow mb-4'>
 			<div className='text-center'>
@@ -20,8 +23,8 @@ export default function Sidebar({ user }) {
 					/>
 					<h2 className='text-xl font-semibold mt-2'>{user.username}</h2>
 				</Link>
-				<p className='text-info'>{user.headline}</p>
-				<p className='text-info text-xs'>{user.followers.length} followers</p>
+				<p className='text-info'>{t(`auth.${(user.headline)}`)}</p>
+				<p className='text-info text-xs'>{user.followers.length} {t("user.followers")}</p>
 			</div>
 			<div className='border-t border-base-100 p-4'>
 				<nav>
@@ -31,15 +34,16 @@ export default function Sidebar({ user }) {
 								to='/depot'
 								className='flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-colors'
 							>
-								<Home className='mr-2' size={20} /> Home
+								<Home className='me-2' size={20} /> {t("navbar.Home")}
 							</Link>
 						</li>
+
 						<li>
 							<Link
 								to="/dashboard"
 								className='flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-colors'
 							>
-								<UserPlus className='mr-2' size={20} /> My Dashboard
+								<UserPlus className='me-2' size={20} /> {t("navbar.Dashboard")}
 							</Link>
 						</li>
 						<li>
@@ -47,7 +51,7 @@ export default function Sidebar({ user }) {
 								to='/services'
 								className='flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-colors'
 							>
-								<Hammer className='mr-2' size={20} /> Service Providers
+								<Hammer className='me-2' size={20} /> {t("navbar.service1")}
 							</Link>
 						</li>
 						<li>
@@ -55,7 +59,7 @@ export default function Sidebar({ user }) {
 								to='/workers'
 								className='flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-colors'
 							>
-								<BicepsFlexed className='mr-2' size={20} /> Workers Providers
+								<BicepsFlexed className='me-2' size={20} /> {t("navbar.service2")}
 							</Link>
 						</li>
 					</ul>
@@ -63,15 +67,15 @@ export default function Sidebar({ user }) {
 			</div>
 			<div className='border-t border-base-100 p-4'>
 				<Link to={`/profile/${user._id}`} className='text-sm font-semibold hover:text-orange-500'>
-					Visit your profile
+					{t("user.visitProfile")}
 				</Link>
 			</div>
-		<div className="p-4">
-		<Link to="/create-scrap" className='btn border border-gray-500 bg-white text-sm font-semibold w-full'>
-					Create Scrap
+			<div className="p-4">
+				<Link to="/create-scrap" className='btn border border-gray-500 bg-white text-sm font-semibold w-full'>
+					{t("form.title")}
 				</Link>
-		</div>
-				
+			</div>
+
 		</div>
 	);
 }

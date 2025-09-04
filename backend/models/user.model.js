@@ -51,6 +51,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum:["Supplier and Contractor" ,"Supplier" , "Contractor"],
     },
+    record: {
+        type: String,
+        required: true
+    },
     laborPayment:{
         type: String,
         enum: ["daily","monthly"],

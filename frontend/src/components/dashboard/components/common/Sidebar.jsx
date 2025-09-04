@@ -2,22 +2,26 @@ import { CircleDollarSign, Menu, Settings, ThumbsUp, Users } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const SIDEBAR_ITEMS = [
-	
-	//the scraps user make
-	{ name: "My Deals", icon: CircleDollarSign, color: "green-600", href: "/" },
-	//liked items
-	{ name: "Liked Items", icon: ThumbsUp , color: "blue-600", href: "/likes" },
-	//the follower and following users
-	{ name: "Networrk", icon: Users, color: "red-600", href: "/network" },
-	//setting & edite profile
-	{ name: "Settings", icon: Settings, color: "gray-900", href: "/settings" },
-];
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({isSidebarOpen, setIsSidebarOpen }) => {
 	
+	const { t } = useTranslation();
+
+	const SIDEBAR_ITEMS = [
+	
+		//the scraps user make
+		{ name: t("dashboard.Deals") , icon: CircleDollarSign, color: "green-600", href: "/" },
+		//liked items
+		{ name: t("dashboard.Liked") , icon: ThumbsUp , color: "blue-600", href: "/likes" },
+		//the follower and following users
+		{ name: t("dashboard.Network"), icon: Users, color: "red-600", href: "/network" },
+		//setting & edite profile
+		// { name: "Settings", icon: Settings, color: "gray-900", href: "/settings" },
+	];
+
 	const location = useLocation();
 	let activeLink = location.pathname;
     const baseClass ='flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-300 hover:text-gray-900 transition-colors mb-2'
@@ -46,7 +50,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen }) => {
 											exit={{ opacity: 0, width: 0 }}
 											transition={{ duration: 0.2, delay: 0.3 }}
 										>
-											dashboard
+											{t("dashboard.title")}
 										</motion.span>
 									)}
 								</AnimatePresence>
@@ -61,7 +65,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen }) => {
 								<AnimatePresence>
 									{isSidebarOpen && (
 										<motion.span
-											className='ml-4 whitespace-nowrap'
+											className='ms-4 whitespace-nowrap'
 											initial={{ opacity: 0, width: 0 }}
 											animate={{ opacity: 1, width: "auto" }}
 											exit={{ opacity: 0, width: 0 }}
