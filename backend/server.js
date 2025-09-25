@@ -50,4 +50,3 @@ app.listen(PORT,()=>{
     console.log(`server runing on port ${PORT}`)
     connectDB();
 })
-

@@ -46,7 +46,10 @@ const DepotPage = () => {
 		}
 	});
 
-	let filteredScraps = data?.pages.flatMap((page) => page.data) || [];
+	let filteredScraps =
+		data?.pages.flatMap((page) =>
+			Array.isArray(page?.data) ? page.data : []
+			) || [];
 
 	if (search.trim() !== "") {
 		filteredScraps = filteredScraps.filter((scrap) =>
