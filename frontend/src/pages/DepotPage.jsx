@@ -94,7 +94,7 @@ const DepotPage = () => {
 					{authUser && (
 						<div className='col-span-1 lg:col-span-1 lg:block flex flex-col'>
 							<Sidebar user={authUser} />
-							{recommendedUsers?.length > 0 && (
+							{(recommendedUsers?.length || 0) > 0 && Array.isArray(recommendedUsers) && (
 								<div className='bg-white rounded-lg shadow p-4'>
 									<h2 className='font-semibold mb-4'>{t("depot.peopleYouMayKnow")}</h2>
 									{recommendedUsers?.map((user) => (
