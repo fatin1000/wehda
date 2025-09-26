@@ -24,7 +24,9 @@ export default function Sidebar({ user }) {
 					<h2 className='text-xl font-semibold mt-2'>{user.username}</h2>
 				</Link>
 				<p className='text-info'>{t(`auth.${(user.headline)}`)}</p>
-				<p className='text-info text-xs'>{user.followers.length} {t("user.followers")}</p>
+				<p className="text-info text-xs">
+				{(user.followers?.length || 0)} {t("user.followers")}
+				</p>
 			</div>
 			<div className='border-t border-base-100 p-4'>
 				<nav>
