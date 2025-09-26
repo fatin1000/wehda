@@ -38,8 +38,9 @@ const Navbar = () => {
 		},
 	});
 
-	const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
-
+	const unreadNotificationCount = Array.isArray(notifications?.data)
+	? notifications.data.filter((notif) => !notif.read).length
+	: 0;
 	return (
 		<nav className='bg-white shadow-md sticky top-0 z-10'>
 			<div className='max-w-7xl mx-auto px-4'>
