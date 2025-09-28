@@ -48,7 +48,6 @@ export const singup = async (req,res)=>{
 
 
     }catch(err){
-        console.log("Error in singup",err)
         res.status(500).json({message:"Something went wrong"})
     }
 }

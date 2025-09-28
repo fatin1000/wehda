@@ -22,7 +22,6 @@ export const adminProtectRoute =async(req,res,next)=>{
 
         next()
     }catch(err){
-        console.log("Error in prodectRoute middleware:",err.message)
         res.status(500).json({message:"Internal server error"})
     }
 }

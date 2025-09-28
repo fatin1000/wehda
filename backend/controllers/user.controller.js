@@ -35,7 +35,6 @@ export const getLikedScraps = async (req, res) => {
         }
 		res.status(200).json(myLikedScraps);
 	} catch (error) {
-		console.log("Error in getLikedScraps controller:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 };
@@ -104,7 +103,6 @@ export const updateProfile = async (req, res) => {
                             console.error("Cloudinary error:", error);
                             return reject(error);
                         }
-                        console.log("Uploaded new profilePic:", response.secure_url);
                         updatedData.profilePic = response.secure_url;
                         resolve();
                     }
@@ -191,7 +189,6 @@ export const followUnfollowUser = async (req, res) => {
 			res.status(200).json({ message: "User followed successfully" });
 		}
 	} catch (error) {
-		console.log("Error in followUnfollowUser: ", error.message);
 		res.status(500).json({ error: error.message });
 	}
 };
@@ -210,7 +207,6 @@ export const getServices = async (req, res) => {
 
         res.status(200).json(users);
     } catch (error) {
-        console.log("Error in getServices controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -225,7 +221,6 @@ export const getWorkers = async (req, res) => {
 
         res.status(200).json(users);
     }catch (error) {
-        console.log("Error in getWorkers controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -238,7 +233,6 @@ export const getNetwork = async (req, res) => {
         
         res.status(200).json(network);
     }catch (error) {
-        console.log("Error in getNetwork controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 }
@@ -270,7 +264,6 @@ export const updatePassword = async (req, res) => {
 
         res.status(200).json({ message: "Password updated successfully" });
     } catch (error) {
-        console.log("Error in updatePassword controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -288,7 +281,6 @@ export const deleteAccount = async (req, res) => {
         res.clearCookie("jwt-wehda");
         res.status(200).json({ message: "Account deleted successfully" });
     } catch (error) {
-        console.log("Error in deleteAccount controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };

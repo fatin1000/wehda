@@ -33,7 +33,6 @@ export const getAllScraps = async (req, res) => {
         });
 
     } catch (error) {
-        console.log("Error in getAllScraps controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -198,7 +197,6 @@ export const getSavedScraps = async (req, res) => {
         
 		res.status(200).json(savedScraps);
 	} catch (error) {
-		console.log("Error in getSeavedScraps controller: ", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 };
@@ -224,7 +222,6 @@ export const getFollowingScraps = async (req, res) => {
 
 		res.status(200).json(feedScraps);
 	} catch (error) {
-		console.log("Error in getFollowingScraps controller: ", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 };
@@ -246,7 +243,6 @@ try {
 
     res.status(200).json(scraps);
 } catch (error) {
-    console.log("Error in getAllPosts controller: ", error);
     res.status(500).json({ error: "Internal server error" });
 }
 };
