@@ -37,21 +37,22 @@ function App() {
 
 
 	const navigate = useNavigate();
-	const { data: authUser, isLoading } = useQuery({
-		queryKey: ["authUser"],
-		queryFn: async () => {
-			try {
-				const res = await axiosInstance.get("/auth/me");
-				if(!res.data) return null;
-				return res.data;
-			} catch (err) {
-				if (err.response && err.response.status === 401) {
-					return null;
-				}
-				toast.error(err.response.data.message || "Something went wrong");
-			}
-		},
-	});
+	const token = localStorage.getItem("jwt-wehda");
+
+const { data: authUser, isLoading } = useQuery({
+  queryKey: ["authUser"],
+  enabled: !!token,
+  queryFn: async () => {
+    try {
+      const res = await axiosInstance.get("/auth/me");
+      return res.data || null;
+    } catch (err) {
+      if (err.response?.status === 401) return null;
+      toast.error(err.response?.data?.message || "Something went wrong");
+      return null;
+    }
+  },
+});
 	const { data: authAdmin, isLoading : isLoadingAdmin } = useQuery({
 		queryKey: ["authAdmin"],
 		queryFn: async () => {
