@@ -71,9 +71,8 @@ function App() {
 	if (isLoading) return null;
 	if (isLoadingAdmin) return null;
 
-	let activeUser = authUser
+	const activeUser = authUser?.active === false ? false : authUser;
     if (authUser?.active == false) {
-      activeUser = false
 	  navigate("/forbidden")
 	} 
 	
