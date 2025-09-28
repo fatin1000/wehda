@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 export default function Sidebar({ user }) {
 	const { t } = useTranslation();
-
+	if (!user) {
+		return null;
+	}
 	return (
 		<div className='bg-white rounded-lg shadow mb-4'>
 			<div className='text-center'>
