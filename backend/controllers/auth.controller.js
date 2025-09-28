@@ -141,7 +141,6 @@ export const login =async (req,res)=>{
         res.json({message:"Logged in successfully"})
 
     }catch(err){
-        console.error("Error in login contoller:",err)
         res.status(500).json({message:"Server Error!"})
     }
 }
@@ -160,7 +159,6 @@ export const getCurrentUser =async(req,res) =>{
     try{
         res.json(req.user)
     }catch(err){
-        console.error("Error in getCurrentUser controller:",err)
         res.status(500).json({message:"Server error"})
     }
 }
