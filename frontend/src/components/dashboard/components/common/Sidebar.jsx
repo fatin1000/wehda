@@ -1,4 +1,4 @@
-import { CircleDollarSign, Menu, Settings, ThumbsUp, Users } from "lucide-react";
+import { CircleDollarSign, Menu, ThumbsUp, Users } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";

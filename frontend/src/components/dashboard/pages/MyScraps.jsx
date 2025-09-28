@@ -20,8 +20,6 @@ const MyScraps = () => {
 
   const myScrapsArr = scrapLoading ? [] : userScraps;
 
-  // console.log(myScrapsArr , "myScrapsArr");
-  // console.log(myScrapsResArr , "myScrapsResArr");
 
   const { t } = useTranslation();
   return (

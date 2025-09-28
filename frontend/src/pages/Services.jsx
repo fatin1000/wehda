@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BicepsFlexed, Building2, Hammer, Mail, Phone } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { cityOptions , fildOptions} from "../data/options";
 
 const fetchUsers = async ([service, city]) => {
     const res = await axiosInstance.get(`/users/services/${service}/${city}`);
@@ -19,8 +20,6 @@ const fetchUsers = async ([service, city]) => {
 
 const Services = () => {
     const { t } = useTranslation();
-    const servicesOptions = ['field1', "field2", "field3", "field4", "field5", "field6", "field7", "field8", "field9", "field10"];
-    const cityOptions = ['city1', 'city2', 'city3', 'city4', "city5", "city6", "city7", "city8", "city9", "city10"]
 
     const [service, setService] = useState("");
     const [city, setCity] = useState("");
@@ -40,7 +39,6 @@ const Services = () => {
     const handleSearch = () => {
         fetchUsers([service, city]);
         setSerching(true);
-        console.log(service, city);
     };
 
     const DBservices = usersServices ? usersServices : ["start"];
@@ -67,8 +65,8 @@ const Services = () => {
                             className="flex-1 p-2 rounded border"
                         >
                             <option value="" disabled className="text-gray-500 ">{t("services.selectService")}</option>
-                            {servicesOptions.map((option) => (
-                                <option key={option} value={option}>{option}</option>
+                            {fildOptions.map((option) => (
+                                <option key={option.label} value={option.value}>{option.label}</option>
                             ))}
                         </select>
                     </div>
@@ -83,7 +81,7 @@ const Services = () => {
                         >
                             <option value="" disabled className="text-gray-500">{t("services.selectCity")}</option>
                             {cityOptions.map((option) => (
-                                <option key={option} value={option}>{option}</option>
+                                <option key={option.label} value={option.value}>{option.label}</option>
                             ))}
                         </select>
                     </div>

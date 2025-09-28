@@ -43,7 +43,6 @@ const Network = () => {
   const baseClass =
     "text-white py-2 px-4 rounded-full transition duration-300 flex items-center justify-center";
 
-  console.log(network, "network");
   return (
     <Dashboardlayout>
       <div className="flex-1 overflow-auto relative py-6 px-4 lg:px-8">

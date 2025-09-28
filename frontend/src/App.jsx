@@ -76,7 +76,6 @@ function App() {
       activeUser = false
 	  navigate("/forbidden")
 	} 
-	console.log(authAdmin)
 	
 	return (
 		<Layout>

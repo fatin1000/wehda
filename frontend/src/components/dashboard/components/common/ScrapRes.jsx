@@ -7,7 +7,6 @@ import {
   CircleDollarSign,
   ExternalLink,
   Loader,
-  LocateIcon,
   MapPin,
   Trash2,
   X,
@@ -112,8 +111,7 @@ const ScrapRes = () => {
   };
 
   const myScrapsResArr = scrapResLoading || !myScrapRes ? [] : myScrapRes;
-  console.log(scrap, "scrap");
-  console.log(myScrapsResArr, "myScrapResArr");
+ 
 
   if (isLoading) {
     return (

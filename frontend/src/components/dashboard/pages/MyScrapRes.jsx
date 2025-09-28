@@ -15,7 +15,6 @@ const MyScrapRes = () => {
       return res.data;
     },
   });
-  console.log(scrapResponse);
   return (
     <div className="relative w-full overflow-hidden">
       {scrapResLoading ? (

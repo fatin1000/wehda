@@ -17,7 +17,6 @@ const animatedComponents = makeAnimated();
 const SignUpForm = () => {
 	const { t } = useTranslation();
 	const dir = localStorage.getItem("i18nextLng");
-	console.log(dir);
 	const navigate = useNavigate();
 
 	const [email, setEmail] = useState("");

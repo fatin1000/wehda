@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Building, Loader, Mail, Phone } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { cityOptions } from "../data/options";
 
 const fetchUsers = async (city) => {
     const res = await axiosInstance.get(`/users/workers/${city}`);
@@ -20,7 +21,6 @@ const fetchUsers = async (city) => {
 
 const Workers = () => {
     const { t } = useTranslation();
-    const cityOptions = ['city1', 'city2', 'city3', 'city4', "city5", "city6", "city7", "city8", "city9", "city10"]
 
     const [city, setCity] = useState("");
     const [Serching, setSerching] = useState(false);
@@ -39,7 +39,6 @@ const Workers = () => {
     const handleSearch = () => {
         fetchUsers(city);
         setSerching(true);
-        console.log(city);
     };
 
     const DBservices = usersServices ? usersServices : ["start"];
@@ -67,7 +66,7 @@ const Workers = () => {
                         >
                             <option value="" disabled className="text-gray-500">{t("workers.selectCity")}</option>
                             {cityOptions.map((option) => (
-                                <option key={option} value={option}>{option}</option>
+                                <option key={option.label} value={option.value}>{option.label}</option>
                             ))}
                         </select>
                     </div>
