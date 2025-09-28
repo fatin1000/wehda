@@ -85,11 +85,11 @@ if( whitelist.includes(req.body.email) ) {
 
         const token =jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"1d"})
 
-        res.cookie("jwt-wehda",token,{
-            httpOnly:true,
-            maxAge: 24 * 60 * 1000,
-            sameSite:"strict",
-            seucure: process.env.NODE_ENV === "production"
+        res.cookie("jwt-wehda", token, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000, // يوم كامل
+            sameSite: "Strict",
+            secure: process.env.NODE_ENV === "production"
         })
 
         res.status(201).json({message:"User registered successfully"})
@@ -157,6 +157,9 @@ export const logout = async (req,res)=>{
 
 export const getCurrentUser =async(req,res) =>{
     try{
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized" });
+          }          
         res.json(req.user)
     }catch(err){
         res.status(500).json({message:"Server error"})
