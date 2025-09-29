@@ -157,6 +157,7 @@ export const logout = async (req,res)=>{
 
 export const getCurrentUser =async(req,res) =>{
     try{
+        res.set("Cache-Control", "no-store");
         if (!req.user) {
             return res.status(401).json({ message: "Unauthorized" });
           } 
