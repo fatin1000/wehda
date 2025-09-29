@@ -66,7 +66,7 @@ const Services = () => {
                         >
                             <option value="" disabled className="text-gray-500 ">{t("services.selectService")}</option>
                             {fildOptions.map((option) => (
-                                <option key={option.label} value={option.value}>{option.label}</option>
+                                <option key={option.label} value={option.value}>{t(option.label)}</option>
                             ))}
                         </select>
                     </div>
@@ -81,7 +81,7 @@ const Services = () => {
                         >
                             <option value="" disabled className="text-gray-500">{t("services.selectCity")}</option>
                             {cityOptions.map((option) => (
-                                <option key={option.label} value={option.value}>{option.label}</option>
+                                <option key={option.label} value={option.value}>{t(option.label)}</option>
                             ))}
                         </select>
                     </div>

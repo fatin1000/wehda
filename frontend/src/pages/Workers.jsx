@@ -66,7 +66,7 @@ const Workers = () => {
                         >
                             <option value="" disabled className="text-gray-500">{t("workers.selectCity")}</option>
                             {cityOptions.map((option) => (
-                                <option key={option.label} value={option.value}>{option.label}</option>
+                                <option key={option.label} value={option.value}>{t(option.label)}</option>
                             ))}
                         </select>
                     </div>
