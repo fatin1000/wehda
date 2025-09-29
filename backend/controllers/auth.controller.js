@@ -159,8 +159,9 @@ export const getCurrentUser =async(req,res) =>{
     try{
         if (!req.user) {
             return res.status(401).json({ message: "Unauthorized" });
-          }          
-        res.json(req.user)
+          } 
+        const user = await User.findById(req.user._id).select("-password")
+        res.json(user)
     }catch(err){
         res.status(500).json({message:"Server error"})
     }
