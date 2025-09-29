@@ -5,6 +5,7 @@ import Notification from "../models/notification.model.js"
 
 export const getAllScraps = async (req, res) => {
     try {
+        res.set("Cache-Control", "no-store");
         const { page = 1, limit = 10 } = req.query;
         const skip = (page - 1) * limit;
 
