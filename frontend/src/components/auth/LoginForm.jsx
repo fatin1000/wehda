@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { axiosInstance } from "../../lib/axios";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import axios from "axios";
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ const LoginForm = () => {
   const queryClient = useQueryClient();
 
   const { mutate: loginMutation, isPending } = useMutation({
-    mutationFn: (userData) => axiosInstance.post("/auth/login", userData),
+    mutationFn: (userData) => axios.post("https://wehda.io/api/v1/auth/login", userData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
