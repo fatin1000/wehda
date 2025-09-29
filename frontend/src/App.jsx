@@ -52,13 +52,13 @@ function App() {
 		  }
 		},
 	  });
-	  
+
 	const { data: authAdmin, isLoading : isLoadingAdmin } = useQuery({
 		queryKey: ["authAdmin"],
 		queryFn: async () => {
 			try {
-				const res = await axiosInstance.get("/admin/adminAuth");
-				if(!res.data) return null;
+				const res = await axiosInstance.get("/admin/adminAuth" , { withCredentials: true });
+				if (!res.data || !res.data._id) return null;
 				return res.data;
 			} catch (err) {
 				if (err.response && err.response.status === 401) {
