@@ -45,7 +45,8 @@ const { data: authUser, isLoading } = useQuery({
   queryFn: async () => {
     try {
       const res = await axiosInstance.get("/auth/me");
-      return res.data || null;
+      if(!res.data) return null;
+		return res.data;
     } catch (err) {
       if (err.response?.status === 401) return null;
       toast.error(err.response?.data?.message || "Something went wrong");
