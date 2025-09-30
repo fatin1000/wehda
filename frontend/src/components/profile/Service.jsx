@@ -15,7 +15,10 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
     const [isEditingF, setIsEditingF] = useState(false);
     const [editedData, setEditedData] = useState({});
 
-
+    const translatedFildOptions = fildOptions.map(option => ({
+		value: option.value,
+		label: t(option.label)
+	  }));
     const limitOptions = (current, fields, loader) => {
         if (loader === "more than 9") return fields.length >= 7;
 
@@ -35,15 +38,14 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                 return;
             }
         }
-        onSave(editedData);
+
+        const cleanedFields = editedData.fields.map(f => ({ value: f.value }));
+        onSave({ ...editedData, fields: cleanedFields });
         setIsEditing(false);
         setIsEditingF(false);
     };
 
-    const translatedFildOptions = fildOptions.map(option => ({
-		value: option.value,
-		label: t(option.label)
-	  }));
+    
     return (
         <ProfileSection icon={Handshake} title={t('profile.services.title')}>
 
@@ -160,7 +162,7 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                 ) : (
                     <ul>
                         {userData.fields.map(fild => <li key={fild.value} className="flex items-center gap-2 mb-2">
-                            <CircleArrowRight className="size-4 text-gray-500" /> <span>{t(`fields.${fild.label}`)}</span>
+                            <CircleArrowRight className="size-4 text-gray-500" /> <span>{t(fild.label)}</span>
                         </li>)}
                     </ul>
                 )}
