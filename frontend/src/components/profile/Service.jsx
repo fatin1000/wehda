@@ -35,7 +35,6 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                 return;
             }
         }
-        console.log("data", editedData.fields);
         onSave(editedData);
         setIsEditing(false);
         setIsEditingF(false);
@@ -43,7 +42,7 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
 
     const translatedFildOptions = fildOptions.map(option => ({
 		value: option.value,
-		label: t(option.label)
+		label: t(`fields.${option.value}`)
 	  }));
     return (
         <ProfileSection icon={Handshake} title={t('profile.services.title')}>
