@@ -31,7 +31,7 @@ app.use(cors({
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser())
 
-app.use('api/v1/auth',authRoutes)
+app.use('/api/v1/auth',authRoutes)
 app.use('/api/v1/users',userRoutes)
 app.use('/api/v1/scraps',scrapRoutes)
 app.use('/api/v1/scrapResponse',scrapResponseRoutes)
