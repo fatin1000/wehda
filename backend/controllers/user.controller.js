@@ -121,7 +121,7 @@ export const updateProfile = async (req, res) => {
                 await cloudinary.uploader.destroy(publicId);
             }
 
-            const base64Data = req.body.profilePic.replace(/^data:image\/\w+;base64,/, "");
+            const base64Data = req.body.bannerPic.replace(/^data:image\/\w+;base64,/, "");
             const buffer = Buffer.from(base64Data, "base64");
             const resizedImage = await sharp(buffer)
                 .resize({ width: 1200 }) // تحديد العرض إلى 1200 بكسل والطول سيُضبط تلقائيًا
