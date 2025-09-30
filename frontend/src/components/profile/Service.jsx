@@ -159,7 +159,9 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                     </div>
                 ) : (
                     <ul>
-                        {userData.fields.map(fild => <li key={fild.value} className="flex items-center gap-2 mb-2"><CircleArrowRight className="size-4 text-gray-500" /> <span>{fild.label}</span></li>)}
+                        {userData.fields.map(fild => <li key={fild.value} className="flex items-center gap-2 mb-2">
+                            <CircleArrowRight className="size-4 text-gray-500" /> <span>{t(fild.label)}</span>
+                        </li>)}
                     </ul>
                 )}
 
