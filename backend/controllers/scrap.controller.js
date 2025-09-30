@@ -65,7 +65,9 @@ export const createScrap = async(req,res)=>{
             if(!unitPrice) return res.status(400).json({message:"Unit price is required"});
             if(sell === "retail" && !minAmount) return res.status(400).json({message:"Min amount is required"});    
 
-            const imgResult = await cloudinary.uploader.upload(image);
+            const imgResult = await cloudinary.uploader.upload(image, {
+                resource_type: "image",
+              });
              const newScrap = new Scrap({
                     author: req.user._id,
                     image: imgResult.secure_url,
