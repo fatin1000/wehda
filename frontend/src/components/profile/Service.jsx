@@ -40,6 +40,10 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
         setIsEditingF(false);
     };
 
+    const translatedFildOptions = fildOptions.map(option => ({
+		value: option.value,
+		label: t(option.label)
+	  }));
     return (
         <ProfileSection icon={Handshake} title={t('profile.services.title')}>
 
@@ -147,7 +151,7 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                             closeMenuOnSelect={false}
                             isMulti
                             isSearchable
-                            options={fildOptions}
+                            options={translatedFildOptions}
                             value={editedData.fields ?? userData.fields}
                             onChange={handleChange}
                             isOptionDisabled={(option) => limitOptions(option, (editedData.fields ?? userData.fields), (editedData.labor ?? userData.labor))}
@@ -155,7 +159,7 @@ const Service = ({ userData, onSave, isOwnProfile }) => {
                     </div>
                 ) : (
                     <ul>
-                        {userData.fields.map(fild => <li key={fild.value} className="flex items-center gap-2 mb-2"><CircleArrowRight className="size-4 text-gray-500" /> <span>{fild.label}</span></li>)}
+                        {userData.fields.map(fild => <li key={fild.value} className="flex items-center gap-2 mb-2"><CircleArrowRight className="size-4 text-gray-500" /> <span>{t(fild.label)}</span></li>)}
                     </ul>
                 )}
 
