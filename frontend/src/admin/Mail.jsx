@@ -16,7 +16,7 @@ const Mail = () => {
 	const { data: allMails, isLoading: allMailsLoading, error } = useQuery({
     queryKey: ["allMails"],
     queryFn: async () => {
-      const res = await axiosInstance.get("/admin/allMails");
+      const res = await axiosInstance.get("admin/allMails");
       return res.data;
     },
   });
@@ -24,7 +24,7 @@ const Mail = () => {
 
   const { mutate: deleteMail} = useMutation({
 		mutationFn: async (id) => {
-			await axiosInstance.delete(`/admin/deleteMail/${id}`);
+			await axiosInstance.delete(`admin/deleteMail/${id}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["allMails"] });
@@ -36,7 +36,7 @@ const Mail = () => {
 	});
   const { mutate: ReadMail} = useMutation({
 		mutationFn: async (id) => {
-			await axiosInstance.put(`/admin/mailRead/${id}`);
+			await axiosInstance.put(`admin/mailRead/${id}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["allMails"] });

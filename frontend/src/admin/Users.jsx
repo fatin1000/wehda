@@ -12,7 +12,7 @@ const [search, setSearch] = useState("");
 	const { data: allUsersData, isLoading: allUsersLoading, error } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await axiosInstance.get("/admin/allUsers");
+      const res = await axiosInstance.get("admin/allUsers");
       return res.data;
     },
   });
@@ -20,7 +20,7 @@ const [search, setSearch] = useState("");
 
   const { mutate: deleteUser} = useMutation({
 		mutationFn: async (id) => {
-			await axiosInstance.delete(`/admin/delete/${id}`);
+			await axiosInstance.delete(`admin/delete/${id}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["allUsers"] });
@@ -32,7 +32,7 @@ const [search, setSearch] = useState("");
 	});
   const { mutate: desactiveUser} = useMutation({
 		mutationFn: async (id) => {
-			await axiosInstance.put(`/admin/desActive/${id}`);
+			await axiosInstance.put(`admin/desActive/${id}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["allUsers"] });
@@ -44,7 +44,7 @@ const [search, setSearch] = useState("");
 	});
   const { mutate: activeUser} = useMutation({
 		mutationFn: async (id) => {
-			await axiosInstance.put(`/admin/active/${id}`);
+			await axiosInstance.put(`admin/active/${id}`);
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["allUsers"] });

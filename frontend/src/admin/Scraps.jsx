@@ -13,14 +13,14 @@ const Scraps = () => {
 	const { data: allScraps, isLoading: allScarpsLoading, error } = useQuery({
     queryKey: ["adminAllScarps"],
     queryFn: async () => {
-      const res = await axiosInstance.get("/admin/allScraps");
+      const res = await axiosInstance.get("admin/allScraps");
       return res.data;
     },
   });
 
 	const { mutate: desactiveScrap} = useMutation({
     mutationFn: async (id) => {
-      await axiosInstance.put(`/admin/desActiveScraps/${id}`);
+      await axiosInstance.put(`admin/desActiveScraps/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userScrap"] });
@@ -33,7 +33,7 @@ const Scraps = () => {
   });
   const { mutate: activeScrap} = useMutation({
     mutationFn: async (id) => {
-      await axiosInstance.put(`/admin/activeScraps/${id}`);
+      await axiosInstance.put(`admin/activeScraps/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userScrap"] });
@@ -46,7 +46,7 @@ const Scraps = () => {
   });
   const { mutate: scrapDelete } = useMutation({
     mutationFn: async (id) => {
-      await axiosInstance.delete(`/admin/scrapDelete/${id}`);
+      await axiosInstance.delete(`admin/scrapDelete/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userScrap"] });

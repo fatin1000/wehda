@@ -42,7 +42,7 @@ function App() {
 		queryKey: ["authUser"],
 		queryFn: async () => {
 		  try {
-			const res = await axiosInstance.get("/auth/me", { withCredentials: true });
+			const res = await axiosInstance.get("auth/me", { withCredentials: true });
 			if (!res.data || !res.data._id) return null;
 			return res.data;
 		  } catch (err) {
@@ -57,7 +57,7 @@ function App() {
 		queryKey: ["authAdmin"],
 		queryFn: async () => {
 			try {
-				const res = await axiosInstance.get("/admin/adminAuth" , { withCredentials: true });
+				const res = await axiosInstance.get("admin/adminAuth" , { withCredentials: true });
 				if (!res.data || !res.data._id) return null;
 				return res.data;
 			} catch (err) {

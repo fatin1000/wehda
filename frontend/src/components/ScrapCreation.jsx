@@ -37,7 +37,7 @@ const ScrapCreation = () => {
 
 	const { mutate: createScrapMutation, isPending } = useMutation({
 		mutationFn: async (data) => {
-			const res = await axiosInstance.post("/scraps/create", data);
+			const res = await axiosInstance.post("scraps/create", data);
 			return res.data;
 		},
 		onSuccess: () => {

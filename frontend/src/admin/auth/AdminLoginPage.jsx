@@ -9,7 +9,7 @@ export default function AdminLoginPage() {
 	const queryClient = useQueryClient();
 
 	const { mutate: loginMutation, isLoading } = useMutation({
-		mutationFn: (userData) => axiosInstance.post("/admin/login", userData),
+		mutationFn: (userData) => axiosInstance.post("admin/login", userData),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["authAdmin"] });
 		},
