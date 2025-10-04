@@ -88,11 +88,10 @@ const Services = () => {
                     {(isLoading) ? (<div>{t("loading")}</div>) : (isError) ? (<div>{t("services.errorLoadingUsers")}</div>) :
                         (DBservices[0] === "start") ? null :
                             (isSuccess && DBservices?.length === 0) ?
-                                (<div className="flex justify-center">{t("services.noProvidersFound", { service, city })} 😓</div>)
+                                (<div className="flex justify-center">{t("services.noProvidersFound")} {t(`fields.${service}`)}  😓</div>)
                                 : (
                                     <div>
                                         <h3 className="text-2xl font-semibold mb-1">{t("services.serviceProviders")}</h3>
-                                        <h5 className="mb-6 text-gray-500">{t("services.usersOffering", { service, city })}</h5>
 
                                         {DBservices.map((user) => (
                                             (user._id === authUser._id) ? null :
@@ -106,18 +105,18 @@ const Services = () => {
                                                             />
                                                             <div>
                                                                 <h2 className="text-lg font-semibold">{user.username}</h2>
-                                                                <p className="text-gray-500">{user.headline}</p>
+                                                                <p className="text-gray-500">{t(`auth.${(user.headline).toLowerCase()}`)}</p>
                                                             </div>
                                                         </Link>
                                                         <p><Phone className="mr-2 text-orange-600 inline size-5" />  {user.phone}</p>
                                                         <a href={`mailto:${user.email}`} ><Mail className="mr-2 text-orange-600 inline size-5" /> <span className="underline">{user.email}</span> </a>
                                                         <p><Building2 className="mr-2 text-orange-600 inline size-5" /> {user.company}</p>
-                                                        {user.services ? (<p><BicepsFlexed className="mr-2 text-orange-600 inline size-5" /> {t("services.provideWorker", { labor: user.labor })}</p>) : null}
+                                                        {user.services ? (<p><BicepsFlexed className="mr-2 text-orange-600 inline size-5" /> {t("services.provideWorker")} {t(`profile.services.worker.${user.labor}`)}</p>) : null}
                                                     </div>
 
                                                     <div>
                                                         <span className="font-semibold text-orange-500"><Hammer className="mr-2 text-orange-600 inline size-5" />{t("services.services")}</span>  {user.fields.map((service) => (
-                                                            <p key={service.label}>{service.value}</p>
+                                                            <p key={service.label}>{t(`fields.${service.value}`)}</p>
                                                         ))}
                                                     </div>
                                                 </div>)

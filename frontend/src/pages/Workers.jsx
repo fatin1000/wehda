@@ -79,11 +79,10 @@ const Workers = () => {
                     {(isLoading) ? (<div className="flex justify-center w-full"><Loader className="animate-spin text-primary" size={40} /></div>) : (isError) ? (<div>{t("workers.errorLoadingUsers")}</div>) :
                         (DBservices[0] === "start") ? null :
                             (isSuccess && DBservices?.length === 0) ?
-                                (<div className="flex justify-center">{t("workers.noWorkersFound", { city })} 😓</div>)
+                                (<div className="flex justify-center">{t("workers.noWorkersFound")} {t(`cities.${city}`)} 😓</div>)
                                 : (
                                     <div>
                                         <h3 className="text-2xl font-semibold mb-1">{t("workers.workersProviders")}</h3>
-                                        <h5 className="mb-6 text-gray-500">{t("workers.usersOfferingWorkers", { city })}</h5>
 
                                         {DBservices.map((user) => (
                                             (user._id === authUser._id) ? null :

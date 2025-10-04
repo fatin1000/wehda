@@ -190,10 +190,9 @@
         "theCity": "The City",
         "selectCity": "Select City",
         "errorLoadingUsers": "Error loading users",
-        "noWorkersFound": "No workers found in {{city}}",
-        "workersProviders": "Workers Providers",
-        "usersOfferingWorkers": "Users offering workers in {{city}}"
-    },
+        "noWorkersFound": "No workers found in",
+        "workersProviders": "Workers Providers"
+        },
     "services": {
         "searchingForGoodService": "Searching for good service",
         "description": "Find reliable service providers in your area",
@@ -202,10 +201,9 @@
         "theCity": "The City",
         "selectCity": "Select City",
         "errorLoadingUsers": "Error loading users",
-        "noProvidersFound": "No service providers found for {{service}} in {{city}}",
+        "noProvidersFound": "No service providers found on",
         "serviceProviders": "Service Providers",
-        "usersOffering": "Users offering {{service}} in {{city}}",
-        "provideWorker": "Provide {{labor}} workers",
+        "provideWorker": "Provide workers:",
         "services": "Services"
     },
     "depot": {

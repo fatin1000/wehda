@@ -190,10 +190,9 @@
         "theCity": "المدينة",
         "selectCity": "اختر المدينة",
         "errorLoadingUsers": "خطأ في تحميل المستخدمين",
-        "noWorkersFound": "لم يتم العثور على عمال في {{city}}",
-        "workersProviders": "مقدمو العمالة",
-        "usersOfferingWorkers": "المستخدمون الذين يقدمون عمالة في {{city}}"
-    },
+        "noWorkersFound": "لم يتم العثور على عمال في",
+        "workersProviders": "مقدمو العمالة"
+        },
     "services": {
         "searchingForGoodService": "البحث عن خدمة جيدة",
         "description": "ابحث عن مقدمي خدمات موثوقين في منطقتك",
@@ -202,10 +201,9 @@
         "theCity": "المدينة",
         "selectCity": "اختر المدينة",
         "errorLoadingUsers": "خطأ في تحميل المستخدمين",
-        "noProvidersFound": "لم يتم العثور على مقدمي خدمات لـ {{service}} في {{city}}",
+        "noProvidersFound": "لم يتم العثور على مقدمي خدمات في",
         "serviceProviders": "مقدمو الخدمات",
-        "usersOffering": "المستخدمون الذين يقدمون {{service}} في {{city}}",
-        "provideWorker": "تقديم {{labor}} عمال",
+        "provideWorker": "يقدم عمال :",
         "services": "الخدمات"
     },
     "depot": {
