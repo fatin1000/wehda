@@ -79,7 +79,7 @@ const Workers = () => {
                     {(isLoading) ? (<div className="flex justify-center w-full"><Loader className="animate-spin text-primary" size={40} /></div>) : (isError) ? (<div>{t("workers.errorLoadingUsers")}</div>) :
                         (DBservices[0] === "start") ? null :
                             (isSuccess && DBservices?.length === 0) ?
-                                (<div className="flex justify-center">{t("workers.noWorkersFound")} {t(`cities.${city}`)} 😓</div>)
+                                (<div className="flex justify-center">{t("workers.noWorkersFound")} <span className="text-primary">{t(`cities.${city}`)}</span> 😓</div>)
                                 : (
                                     <div>
                                         <h3 className="text-2xl font-semibold mb-1">{t("workers.workersProviders")}</h3>
