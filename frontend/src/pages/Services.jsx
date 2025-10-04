@@ -88,7 +88,7 @@ const Services = () => {
                     {(isLoading) ? (<div>{t("loading")}</div>) : (isError) ? (<div>{t("services.errorLoadingUsers")}</div>) :
                         (DBservices[0] === "start") ? null :
                             (isSuccess && DBservices?.length === 0) ?
-                                (<div className="flex justify-center">{t("services.noProvidersFound")} {t(`fields.${service}`)}  😓</div>)
+                                (<div className="flex justify-center">{t("services.noProvidersFound")} {t(`fields.${service}`)} {t("services.in")} {t(`cities.${city}`)}  😓</div>)
                                 : (
                                     <div>
                                         <h3 className="text-2xl font-semibold mb-1">{t("services.serviceProviders")}</h3>

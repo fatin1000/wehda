@@ -201,7 +201,8 @@
         "theCity": "The City",
         "selectCity": "Select City",
         "errorLoadingUsers": "Error loading users",
-        "noProvidersFound": "No service providers found on",
+        "noProvidersFound": "No providers for service",
+        "in": "in",
         "serviceProviders": "Service Providers",
         "provideWorker": "Provide workers:",
         "services": "Services"

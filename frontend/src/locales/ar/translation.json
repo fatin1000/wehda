@@ -201,7 +201,8 @@
         "theCity": "المدينة",
         "selectCity": "اختر المدينة",
         "errorLoadingUsers": "خطأ في تحميل المستخدمين",
-        "noProvidersFound": "لم يتم العثور على مقدمي خدمات في",
+        "noProvidersFound": "لم يتم العثور على مقدمي خدمة",
+        "in": "في",
         "serviceProviders": "مقدمو الخدمات",
         "provideWorker": "يقدم عمال :",
         "services": "الخدمات"
