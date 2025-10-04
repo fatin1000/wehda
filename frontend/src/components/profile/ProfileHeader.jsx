@@ -150,7 +150,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 						<p className='text-gray-600'>{t(`auth.${(userData.headline)}`)}</p>
 					)} */}
 
-						<p className='text-gray-600'>{t(`auth.${(userData.headline)}`)}</p>
+						<p className='text-gray-600'>{t(`auth.${(userData.headline).toLowerCase()}`)}</p>
 						{!isEditing && (<div className="text-gray-500 mt-6">
 							<span className="me-4">{t("profile.followers")}: {userData.followers.length}</span>
 							<span>{t("profile.following")}: {userData.following.length}</span>
