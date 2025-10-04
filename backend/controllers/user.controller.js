@@ -200,9 +200,11 @@ export const getServices = async (req, res) => {
         const { service, city } = req.params;
         const field = { value : service , label : service };
         const location = city.toString();
-        const users = await User.find({ fields: field, location}).select("username headline services phone email company fields labor profilePic");
-        //const users = await User.find({fields: service}, {location : city}).select("name username headline services phone email company fields");
-
+        const users = await User.find({
+            fields: { $elemMatch: { value: service } },
+            location
+          }).select("username headline services phone email company fields labor profilePic");
+          
         if (!users) return res.status(404).json({ error: "There are no users with this service in this city" });
 
         res.status(200).json(users);

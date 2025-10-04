@@ -12,12 +12,6 @@ const fetchUsers = async ([service, city]) => {
     return res.data;
 }
 
-// const fetchUsers = async (key,service, city) => {
-//     const res = await axiosInstance.get(`/users/services/${service}/${city}`);
-//     return res.data;
-// }
-
-
 const Services = () => {
     const { t } = useTranslation();
 
@@ -66,7 +60,7 @@ const Services = () => {
                         >
                             <option value="" disabled className="text-gray-500 ">{t("services.selectService")}</option>
                             {fildOptions.map((option) => (
-                                <option key={option.label} value={option.value}>{t(option.label)}</option>
+                                <option key={option.value} value={option.value}>{t(option.label)}</option>
                             ))}
                         </select>
                     </div>
