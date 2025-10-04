@@ -179,7 +179,7 @@ export const itemOptions = [
   ];
 
   export const headlineOptions = [
-    { value: "Supplier", label: "auth.Supplier" },
+    { value: "Supplier", label: "auth.supplier" },
     // { value: "Contractor", label: "auth.Contractor" },
     // { value: "Supplier & Contractor", label: "auth.Supplier & Contractor" },    
   ];
