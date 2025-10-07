@@ -37,60 +37,75 @@ export const getAllScraps = async (req, res) => {
     }
 };
 
-export const createScrap = async(req,res)=>{
-    
-    try{
-        const {itemName,
-            quantity, 
-            units, 
-            discription,
-            location,
-            category,
-            itemStatus ,
-            sell,
-            minAmount,
-            unitPrice,
-            image
-            } = req.body
-
-            if(!image) return res.status(400).json({message:"Image is required"});
-            if(!itemName) return res.status(400).json({message:"Item name is required"});
-            if(!quantity) return res.status(400).json({message:"Quantity is required"});
-            if(!units) return res.status(400).json({message:"Units is required"});
-            if(!discription) return res.status(400).json({message:"Discription is required"});
-            if(!location) return res.status(400).json({message:"Location is required"});
-            if(!category) return res.status(400).json({message:"Category is required"});
-            if(!itemStatus) return res.status(400).json({message:"Item status is required"});
-            if(!sell) return res.status(400).json({message:"Sell is required"});
-            if(!unitPrice) return res.status(400).json({message:"Unit price is required"});
-            if(sell === "retail" && !minAmount) return res.status(400).json({message:"Min amount is required"});    
-
-            const imgResult = await cloudinary.uploader.upload(image, {
-                resource_type: "image",
-              });
-             const newScrap = new Scrap({
-                    author: req.user._id,
-                    image: imgResult.secure_url,
-                    itemName,
-                    quantity,
-                    oldQuantity:quantity, 
-                    units, 
-                    discription,
-                    location,
-                    category,
-                    itemStatus,
-                    sell,
-                    minAmount,
-                    unitPrice,
-                });
-
-        await newScrap.save();
-        res.status(201).json(newScrap)
-    }catch(err){
-        console.error("Error in createScrap controller:",err)
-        res.status(500).json({message:"Server error"})
+export const createScrap = async (req, res) => {
+    try {
+      const {
+        itemName,
+        quantity,
+        units,
+        discription,
+        location,
+        category,
+        itemStatus,
+        sell,
+        minAmount,
+        unitPrice,
+      } = req.body;
+  
+      // التحقق من الحقول المطلوبة
+      if (!req.file) return res.status(400).json({ message: "Image is required" });
+      if (!itemName) return res.status(400).json({ message: "Item name is required" });
+      if (!quantity) return res.status(400).json({ message: "Quantity is required" });
+      if (!units) return res.status(400).json({ message: "Units is required" });
+      if (!discription) return res.status(400).json({ message: "Discription is required" });
+      if (!location) return res.status(400).json({ message: "Location is required" });
+      if (!category) return res.status(400).json({ message: "Category is required" });
+      if (!itemStatus) return res.status(400).json({ message: "Item status is required" });
+      if (!sell) return res.status(400).json({ message: "Sell is required" });
+      if (!unitPrice) return res.status(400).json({ message: "Unit price is required" });
+      if (sell === "retail" && !minAmount) return res.status(400).json({ message: "Min amount is required" });
+  
+      // رفع الصورة إلى Cloudinary باستخدام stream
+      const streamUpload = (buffer) => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { resource_type: "image" },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result);
+            }
+          );
+          stream.end(buffer);
+        });
+      };
+  
+      const imgResult = await streamUpload(req.file.buffer);
+  
+      // إنشاء السكراب
+      const newScrap = new Scrap({
+        author: req.user._id,
+        image: imgResult.secure_url,
+        itemName,
+        quantity,
+        oldQuantity: quantity,
+        units,
+        discription,
+        location,
+        category,
+        itemStatus,
+        sell,
+        minAmount,
+        unitPrice,
+      });
+  
+      await newScrap.save();
+      res.status(201).json(newScrap);
+    } catch (err) {
+      console.error("Error in createScrap controller:", err);
+      res.status(500).json({ message: "Server error" });
     }
-}
+  };
+  
 
 export const deleteScrap = async(req,res)=>{
     try{

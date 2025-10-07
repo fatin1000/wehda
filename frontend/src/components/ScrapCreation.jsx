@@ -37,7 +37,11 @@ const ScrapCreation = () => {
 
 	const { mutate: createScrapMutation, isPending } = useMutation({
 		mutationFn: async (data) => {
-			const res = await axiosInstance.post("scraps/create", data);
+			const res = await axiosInstance.post("scraps/create", data, {
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+			});
 			return res.data;
 		},
 		onSuccess: () => {
@@ -63,12 +67,22 @@ const ScrapCreation = () => {
 	const handleScrapCreation = async (e) => {
 		e.preventDefault();
 		if (quantity < minAmount) return toast.error(t("scrap.quantityError"));
-
-		const scrapData = { itemName, quantity, units, discription, location, category, itemStatus, sell, minAmount, unitPrice };
-		if (image) scrapData.image = await readFileAsDataURL(image);
-		createScrapMutation(scrapData);
+	
+		const formData = new FormData();
+		formData.append("itemName", itemName?.value || itemName);
+		formData.append("quantity", quantity);
+		formData.append("units", units);
+		formData.append("discription", discription);
+		formData.append("location", location);
+		formData.append("category", category);
+		formData.append("itemStatus", itemStatus);
+		formData.append("sell", sell);
+		formData.append("minAmount", minAmount);
+		formData.append("unitPrice", unitPrice);
+		if (image) formData.append("image", image);
+	
+		createScrapMutation(formData);
 	};
-
 	const resetForm = () => {
 		setItemName("");
 		setQuantity(0);
@@ -244,7 +258,6 @@ const ScrapCreation = () => {
 									<input type='file'
 									 accept='image/*'
 									 className='hidden'
-									 capture="environment"
 									  onChange={handleImageChange} 
 									  required />
 								</label>
