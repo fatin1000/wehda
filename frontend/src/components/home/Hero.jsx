@@ -32,7 +32,7 @@ export default function Hero() {
               >
                 {t("home.hero.getStarted")}
               </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+              <a href="#how-it-works" className="text-sm/6 font-semibold text-gray-900">
                 {t("home.hero.learnMore")} <span aria-hidden="true">→</span>
               </a>
             </div>

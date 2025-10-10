@@ -34,7 +34,7 @@ export default function HowItWork() {
   const features = getFeatures(t);
 
   return (
-    <div className="overflow-hidden bg-transparent px-8 py-6">
+    <div className="overflow-hidden bg-transparent px-8 py-6" id='how-it-works'>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex flex-col sm:flex-row sm:items-center max-w-2xl gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         
