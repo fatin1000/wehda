@@ -1,23 +1,28 @@
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { BanknotesIcon, ChartPieIcon, CloudArrowUpIcon, LockClosedIcon, PresentationChartLineIcon } from '@heroicons/react/20/solid'
 import photo from '../../assets/4.jpg'
 import { useTranslation } from 'react-i18next';
 
 const getFeatures = (t) => [
   {
-    name: t('home.about.pushToDeploy'),
-    description: t('home.about.pushToDeployDesc'),
-    icon: CloudArrowUpIcon,
+    name: t('home.about.1'),
+    icon: PresentationChartLineIcon,
   },
   {
-    name: t('home.about.sslCertificates'),
-    description: t('home.about.sslCertificatesDesc'),
+    name: t('home.about.2'),
     icon: LockClosedIcon,
   },
   {
-    name: t('home.about.databaseBackups'),
-    description: t('home.about.databaseBackupsDesc'),
-    icon: ServerIcon,
+    name: t('home.about.3'),
+    icon: BanknotesIcon,
   },
+  {
+    name: t('home.about.4'),
+    icon: CloudArrowUpIcon,
+  },
+  {
+    name: t('home.about.5'),
+    icon: ChartPieIcon,
+  }
 ]
 
 export default function About() {
@@ -31,23 +36,23 @@ export default function About() {
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
               <h2 className="text-base/7 font-semibold text-primary">{t("home.about.deployFaster")}</h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-[2rem]">
                 {t("home.about.betterWorkflow")}
-              </p>
-              <p className="mt-6 text-lg/8 text-gray-600">
-                {t("home.about.aboutDescription")}
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+              </h3>
+              
+              <div className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-gray-900">
-                      <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-primary" />
-                      {feature.name}
-                    </dt>{' '}
-                    <dd className="inline">{feature.description}</dd>
-                  </div>
+                  <div key={feature.name} className=" flex gap-2">
+                    <span >
+                      <feature.icon aria-hidden="true" className=" size-5 text-primary" />
+                      
+                    </span>
+                    <p className="font-semibold text-gray-900">
+                    {feature.name}
+                      </p>           
+                          </div>
                 ))}
-              </dl>
+              </div>
             </div>
           </div>
           <img

@@ -223,7 +223,7 @@ const Scrap = ({ scrap }) => {
 							<Link to={`/profile/${scrap?.author?._id}`}>
 								<h3 className='font-semibold'>{scrap.author.username}</h3>
 							</Link>
-							<p className='text-xs text-gray-500'>{t(`auth.${(scrap.author.headline)}`)}</p>
+							<p className='text-xs text-gray-500'>{t(`auth.${(scrap.author.headline).toLowerCase()}`)}</p>
 							
 						</div>
 					</div>

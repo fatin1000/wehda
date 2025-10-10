@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col sm:flex-row justify-between  gap-2">
         <div>
-          <p className="flex items-center gap-2  text-gray-500 mb-3"><AtSign size={20} /> RZd7o@example.com</p>
+          <p className="flex items-center gap-2  text-gray-500 mb-3"><AtSign size={20} /> team@wehda.io</p>
           <p className="flex items-center gap-2  text-gray-500 mb-3">{t("home.footer.copyright")}</p>
         </div>
         <div>

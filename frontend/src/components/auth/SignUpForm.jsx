@@ -26,7 +26,7 @@ const SignUpForm = () => {
 	const [company, setCompany] = useState("");
 	const [location, setLocation] = useState("");
 	const [services, setServices] = useState(false);
-	const [headline, setHeadline] = useState("Supplier");
+	const [headline, setHeadline] = useState("Contractor");
 	const [record, setRecord] = useState(null);
 	const [laborPayment, setLaborPayment] = useState("daily");
 	// fields

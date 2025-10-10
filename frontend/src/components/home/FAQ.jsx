@@ -26,6 +26,11 @@ const FAQ = () => {
           <div className="collapse-title font-semibold">{t("home.faq.updateProfile")}</div>
           <div className="collapse-content text-sm">{t("home.faq.updateProfileAnswer")}</div>
         </div>
+        <div className="collapse collapse-plus bg-base-100 border border-base-300 mb-4">
+          <input type="radio" name="my-accordion-3" />
+          <div className="collapse-title font-semibold">{t("home.faq.q4")}</div>
+          <div className="collapse-content text-sm">{t("home.faq.a4")}</div>
+        </div>
       </div>
     </div>
   )

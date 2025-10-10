@@ -128,62 +128,116 @@
         "share": "Share"
     },
     "home": {
-        "hero": {
-            "announcingFunding": "Announcing our next round of funding.",
-            "readMore": "Read more",
-            "dataToEnrich": "Data to enrich your online business",
-            "heroDescription": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.",
-            "getStarted": "Get started",
-            "learnMore": "Learn more"
-        },
-        "about": {
-            "deployFaster": "Deploy faster",
-            "betterWorkflow": "A better workflow",
-            "aboutDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-            "pushToDeploy": "Push to deploy.",
-            "pushToDeployDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-            "sslCertificates": "SSL certificates.",
-            "sslCertificatesDesc": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-            "databaseBackups": "Database backups.",
-            "databaseBackupsDesc": "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis."
-        },
-        "contact": {
-            "title": "Contact",
-            "description": "Aute magna irure deserunt veniam aliqua magna enim voluptate.",
-            "yourName": "Your name",
-            "company": "Company",
-            "email": "Email",
-            "phoneNumber": "Phone number",
-            "message": "Message",
-            "letsTalk": "Let's talk"
-        },
-        "faq": {
-            "title": "FAQ",
-            "subtitle": "Frequently Asked Questions",
-            "howToCreateAccount": "How do I create an account?",
-            "howToCreateAccountAnswer": "Click the Sign Up button in the top right corner and follow the registration process.",
-            "forgotPassword": "I forgot my password. What should I do?",
-            "forgotPasswordAnswer": "Click on Forgot Password on the login page and follow the instructions sent to your email.",
-            "updateProfile": "How do I update my profile information?",
-            "updateProfileAnswer": "Go to My Account settings and select Edit Profile to make changes."
-        },
-        "footer": {
-            "company": "Company",
-            "home": "Home",
-            "about": "About",
-            "services": "Services",
-            "contact": "Contact",
-            "support": "Support",
-            "submitTicket": "Submit ticket",
-            "documentation": "Documentation",
-            "guides": "Guides",
-            "legal": "Legal",
-            "termsOfService": "Terms of service",
-            "privacyPolicy": "Privacy policy",
-            "license": "License",
-            "copyright": "Copyright © 2023 Wehda"
-        }
-    },
+  "hero": {
+    "announcingFunding": "No more hassle from today",
+    "readMore": "Read more",
+    "dataToEnrich": "Manage contracting work easily and intelligently",
+    "heroDescription": "Wehda helps you organize your projects, manage purchases, communicate with suppliers and subcontractors, and generate invoices and statements with ease.",
+    "getStarted": "Get started",
+    "learnMore": "How the platform works"
+  },
+  "about": {
+    "deployFaster": "Work faster",
+    "betterWorkflow": "We help you get work done better",
+    "1": "Manage projects, purchases, and statements in one simple dashboard.",
+    "2": "Find suppliers and subcontractors quickly and reliably across all cities in the Kingdom.",
+    "3": "Sell surplus and idle materials easily and achieve the best possible value.",
+    "4": "Digitally organize documents, licenses, contracts, and invoices.",
+    "5": "Smart analytics to track costs and savings in every project."
+  },
+  "why": {
+    "whyWehda": "Why choose Wehda?",
+    "1": "Because your time on projects is more valuable than daily chasing and searching.",
+    "2": "Designed specifically for contractors and suppliers in the construction sector to help you work faster and smarter, and reduce costs caused by delays or poor organization."
+  },
+  "how": {
+    "howWehda": "How does Wehda work?",
+    "1": "Create your account as a contractor or supplier",
+    "2": "Add your project or request for quotation",
+    "3": "Receive offers and comparisons from suppliers automatically",
+    "4": "Choose the best offer and create a purchase order",
+    "5": "Track execution, statements, and payments from one dashboard",
+    "6": "Get smart reports to help you make quick decisions"
+  },
+  "serve": {
+    "wehdaServe": "Who does Wehda serve?",
+    "1": "Small and medium contractors:",
+    "1des": "To manage projects, purchases, and subcontractors easily",
+    "2": "Suppliers:",
+    "2des": "To showcase products, receive orders, and sell surplus",
+    "3": "Individuals (coming soon):",
+    "3des": "To manage home construction and track budget and phases"
+  },
+  "feat": {
+    "wehdaFeat": "Core Features",
+    "1": "Project, task, and timeline organization",
+    "2": "Send and receive RFQs and purchase orders",
+    "3": "Archive documents, contracts, and blueprints",
+    "4": "Generate statements, invoices, and payments easily",
+    "5": "Manage subcontractors and agreements",
+    "6": "Record daily expenses and petty cash",
+    "7": "Sell surplus and idle materials via the platform",
+    "8": "Analytical reports and smart alerts to improve performance",
+    "9": "Multi-user permissions and regular data backups"
+  },
+  "ai": {
+    "ai": "AI in Wehda",
+    "sub": "AI features will be introduced in the second version of the platform",
+    "1": "Automatic price estimation based on market data",
+    "2": "Alerts when budget is exceeded or execution is delayed",
+    "3": "Generate ready-made quotations and statements",
+    "4": "Suggest suitable suppliers and subcontractors for each project"
+  },
+  "pricingSoon": {
+    "soon": "Coming soon",
+    "h": "Plans & Pricing",
+    "p": "We are in the MVP launch phase, working with a group of contractors and suppliers to test Wehda for free. Soon we will announce flexible subscription plans suitable for all company sizes—from small workshops to mid-sized firms.",
+    "b": "Register now to be among the first users and receive early launch discounts."
+  },
+  "test": {
+    "h": "Current Trials – MVP Phase",
+    "p": "Wehda is currently working with a selected group of contractors and suppliers in the first trial phase. We are testing all features, collecting feedback, and improving the experience before the official launch.",
+    "note": "Note: Final figures will be announced after the public launch, but initial trials showed noticeable savings in time and cost."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Oti magna error deserunt veniam aliqua magna enim voluptate.",
+    "yourName": "Your name",
+    "company": "Company",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "message": "Message",
+    "letsTalk": "Let's talk"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common Questions",
+    "howToCreateAccount": "Is the platform hard to use?",
+    "howToCreateAccountAnswer": "Not at all, it’s designed to be easy for any contractor or supplier.",
+    "forgotPassword": "Do I need a paid subscription?",
+    "forgotPasswordAnswer": "The current trial phase is completely free.",
+    "updateProfile": "Can I manage more than one project?",
+    "updateProfileAnswer": "Yes, depending on your business and team size.",
+    "q4": "Does the platform work in all regions?",
+    "a4": "Yes, it covers all cities and regions of the Kingdom."
+  },
+  "footer": {
+    "company": "Company",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "support": "Support",
+    "submitTicket": "Submit a ticket",
+    "documentation": "Documentation",
+    "guides": "Guides",
+    "legal": "Legal",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "license": "License",
+    "copyright": "© 2025 Wehda – Smart platform for empowering contractors"
+  }
+},
     "workers": {
         "searchingForGoodWorkers": "Searching for good workers",
         "description": "Find reliable workers in your area",
@@ -580,7 +634,7 @@
   },
   "status": {
     "New": "New",
-    "semi_New": "Semi-New",
+    "semi-New": "Semi New",
     "Old": "Old"
   },
   "payment": {

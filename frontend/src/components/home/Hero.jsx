@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="px-6 lg:px-8">
         <div className="mx-auto max-w-2xl py-10 sm:py-20 lg:py-20">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               {t("home.hero.announcingFunding")}{' '}
               <a href="#" className="font-semibold text-primary">
                 <span aria-hidden="true" className="absolute inset-0" />
@@ -19,10 +19,10 @@ export default function Hero() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
+            <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-[4rem] leading-normal">
               {t("home.hero.dataToEnrich")}
             </h1>
-            <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+            <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl">
               {t("home.hero.heroDescription")}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
