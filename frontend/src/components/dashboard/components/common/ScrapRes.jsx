@@ -168,7 +168,7 @@ const ScrapRes = () => {
                 {t(`items.${scrap.itemName.value}`)}
               </h3>
               <p className="text-gray-500 text-sm">
-                {t(`categories.${scrap.category}`)}
+                {t(`categories.${scrap.category.replace(" ", "_")}`)}
               </p>
               <p className="text-gray-500 mb-2 flex items-center gap-2">
                 <MapPin size={16} />
