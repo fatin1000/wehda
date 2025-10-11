@@ -85,7 +85,10 @@ export const createScrap = async (req, res) => {
       const newScrap = new Scrap({
         author: req.user._id,
         image: imgResult.secure_url,
-        itemName,
+        itemName : {
+          value: itemName,
+          label: itemName,
+        },
         quantity,
         oldQuantity: quantity,
         units,

@@ -246,7 +246,7 @@ const Scrap = ({ scrap }) => {
 						onClick={() => navigate(`/scrap/${scrap._id}`)}
 					/>
 				</div>}
-                <p className="text-sm mb-2 text-gray-500 mt-2">{t(`categories.${scrap.category}`)}</p>
+                <p className="text-sm mb-2 text-gray-500 mt-2">{t(`categories.${scrap.category.replace(" ", "_")}`)}</p>
 				<h3 className="font-bold mb-2 text-primary ms-2 sm:text-lg cursor-pointer" onClick={() => navigate(`/scrap/${scrap._id}`)}>{t(`items.${scrap.itemName.value}`)}</h3>
 				<div>
   <p className="text-gray-500">

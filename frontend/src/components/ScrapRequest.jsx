@@ -298,7 +298,7 @@ console.log("scrap",scrap)
           </div>
 
           <p className=" flex items-center gap-1 my-2 text-gray-500">
-            {t(`categories.${scrap.category}`)}
+            {t(`categories.${scrap.category.replace(" ", "_")}`)}
           </p>
           <h3 className="font-bold mb-3 inline-block text-primary sm:text-2xl">
             {t(`items.${scrap.itemName.value}`)}
