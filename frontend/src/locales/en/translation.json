@@ -125,7 +125,19 @@
         "sharingNotSupported": "Sharing is not supported in your browser.",
         "like": "Like",
         "comment": "Comment",
-        "share": "Share"
+        "share": "Share",
+        "itemNameError": "Please select a valid item name",
+        "quantityError1": "Please enter a valid quantity",
+        "unitsError": "Please specify the correct units",
+        "discriptionError": "Please provide a description",
+        "locationError": "Please specify the location",
+        "categoryError": "Please select a category",
+        "itemStatusError": "Please specify the item status",
+        "sellError": "Please select the type of sale",
+        "minAmountError": "Please specify the minimum quantity",
+        "unitPriceError": "Please enter the unit price",
+        "imageError": "Please upload an image"
+
     },
     "home": {
   "hero": {

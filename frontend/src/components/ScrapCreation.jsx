@@ -66,19 +66,30 @@ const ScrapCreation = () => {
 
 	const handleScrapCreation = async (e) => {
 		e.preventDefault();
+		if (!itemName || !itemName.value) return toast.error(t("scrap.itemNameError"));
+		if (!quantity) return toast.error(t("scrap.quantityError1"));
+		if (!units) return toast.error(t("scrap.unitsError"));
+		if (!discription) return toast.error(t("scrap.discriptionError"));
+		if (!location) return toast.error(t("scrap.locationError"));
+		if (!category) return toast.error(t("scrap.categoryError"));
+		if (!itemStatus) return toast.error(t("scrap.itemStatusError"));
+		if (!sell) return toast.error(t("scrap.sellError"));
+		if (!unitPrice) return toast.error(t("scrap.unitPriceError"));
+		if (sell === "retail" && !minAmount) return toast.error(t("scrap.minAmountError"));
+		if (!image) return toast.error(t("scrap.imageError"));
 		if (quantity < minAmount) return toast.error(t("scrap.quantityError"));
 	
 		const formData = new FormData();
-		formData.append("itemName", itemName?.value || itemName);
-		formData.append("quantity", quantity);
-		formData.append("units", units);
-		formData.append("discription", discription);
-		formData.append("location", location);
-		formData.append("category", category);
-		formData.append("itemStatus", itemStatus);
-		formData.append("sell", sell);
-		formData.append("minAmount", minAmount);
-		formData.append("unitPrice", unitPrice);
+		if (itemName?.value || itemName) formData.append("itemName", itemName?.value || itemName);
+		if (quantity) formData.append("quantity", quantity);
+		if (units) formData.append("units", units);
+		if (discription) formData.append("discription", discription);
+		if (location) formData.append("location", location);
+		if (category) formData.append("category", category);
+		if (itemStatus) formData.append("itemStatus", itemStatus);
+		if (sell) formData.append("sell", sell);
+		if (minAmount) formData.append("minAmount", minAmount);
+		if (unitPrice) formData.append("unitPrice", unitPrice);
 		if (image) formData.append("image", image);
 	
 		createScrapMutation(formData);
@@ -259,7 +270,7 @@ const ScrapCreation = () => {
 									 accept='image/*'
 									 className='hidden'
 									  onChange={handleImageChange} 
-									  required />
+									   />
 								</label>
 								<p className="text-gray-500 text-sm mt-2">{t("form.fileHint")}</p>
 							</div>

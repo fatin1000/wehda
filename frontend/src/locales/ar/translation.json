@@ -125,7 +125,18 @@
         "sharingNotSupported": "المشاركة غير مدعومة في متصفحك",
         "like": "إعجاب",
         "comment": "تعليق",
-        "share": "مشاركة"
+        "share": "مشاركة",
+        "itemNameError":"يرجى تحديد الاسم الصحيح للعنصر",
+        "quantityError1":"يرجى تحديد الكمية الصحيحة",
+        "unitsError":"يرجى تحديد الوحدات الصحيحة",
+        "discriptionError":"يرجى تحديد الوصف",
+        "locationError":"يرجى تحديد الموقع",
+        "categoryError":"يرجى تحديد الفئة",
+        "itemStatusError":"يرجى تحديد حالة العنصر",
+        "sellError":"يرجى تحديد نوع البيع",
+        "minAmountError":"يرجى تحديد الحد الادنى للكمية",
+        "unitPriceError":"يرجى تحديد سعر الوحدة",
+        "imageError":"يرجى تحديد صورة"
     },
     "home": {
         "hero": {
