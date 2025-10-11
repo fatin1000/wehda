@@ -34,12 +34,12 @@ export default function Ai() {
             src={photo}
             width={2432}
             height={1442}
-            className=" w-[50%]"
+            className="w-full md:w-[50%]"
           />
 
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h3 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl leading-3">
+              <h3 className="mt-2 text-3xl font-bold text-gray-900 sm:text-[3rem] leading-normal">
                 {t("home.ai.ai")}
               </h3>
               <p className="bg-primary/10 px-3 py-2 text-sm font-semibold text-primary rounded-full mt-4">

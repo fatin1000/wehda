@@ -34,14 +34,14 @@ export default function HowItWork() {
   const features = getFeatures(t);
 
   return (
-    <div className="overflow-hidden bg-transparent px-8 py-6" id='how-it-works'>
+    <div className="overflow-hidden mt-4 bg-transparent px-8 py-6" id='how-it-works'>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto flex flex-col sm:flex-row sm:items-center max-w-2xl gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto flex flex-col-reverse md:flex md:flex-row sm:flex-row sm:items-center max-w-2xl gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         
 
-          <div className='w-[50%]'>
+          <div className='w-full md:w-[50%]'>
             <div className="lg:max-w-lg">
-              <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl leading-3">
+              <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-[3rem] leading-normal">
                 {t("home.how.howWehda")}
               </h3>
               
@@ -65,7 +65,7 @@ export default function HowItWork() {
             src={photo}
             width={2432}
             height={1442}
-            className=" w-[50%]"
+            className="w-full md:w-[50%]"
           />
         </div>
       </div>

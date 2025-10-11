@@ -206,7 +206,7 @@ const ScrapRequest = ({ scrap }) => {
     }
   };
 
-
+console.log("scrap",scrap)
   return (
     <div key={scrap._id} className="bg-white rounded-lg mb-4">
       {isOwner && (

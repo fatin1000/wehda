@@ -1,5 +1,6 @@
 
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -26,12 +27,12 @@ export default function Hero() {
               {t("home.hero.heroDescription")}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-orange-500"
               >
                 {t("home.hero.getStarted")}
-              </a>
+              </Link>
               <a href="#how-it-works" className="text-sm/6 font-semibold text-gray-900">
                 {t("home.hero.learnMore")} <span aria-hidden="true">→</span>
               </a>

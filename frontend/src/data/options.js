@@ -164,7 +164,7 @@ export const itemOptions = [
   
   export const itemStatusOptions = [
     { value: "New", label:  "status.New" },
-    { value: "semi-New", label: "status.semi_New" },
+    { value: "semi-New", label: "status.semi-New" },
     { value: "Old", label: "status.Old" }
   ];
   

@@ -33,12 +33,12 @@ export default function Serve() {
             src={photo}
             width={2432}
             height={1442}
-            className=" w-[50%]"
+            className="w-full md:w-[50%]"
           />
 
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl leading-3">
+              <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-[3rem] leading-normal">
                 {t("home.serve.wehdaServe")}
               </h3>
               
