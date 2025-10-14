@@ -1,5 +1,5 @@
 
-import { AtSign, Facebook, Headset, Instagram, MapPin, Twitter, Youtube } from "lucide-react";
+import { AtSign, Facebook, Headset, Instagram, Mail, MapPin, Twitter, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useQuery } from "@tanstack/react-query";
@@ -20,7 +20,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col sm:flex-row justify-between  gap-2">
         <div>
-          <p className="flex items-center gap-2  text-gray-500 mb-3"><AtSign size={20} /> team@wehda.io</p>
+          <p><a href="mailto:team@wehda.io" className="flex items-center gap-2  text-gray-500 mb-3"><Mail size={20} /> team@wehda.io</a></p>
           <p className="flex items-center gap-2  text-gray-500 mb-3">{t("home.footer.copyright")}</p>
         </div>
         <div>

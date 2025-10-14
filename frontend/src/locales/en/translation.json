@@ -234,8 +234,8 @@
   },
   "footer": {
     "company": "Company",
-    "home": "Home",
-    "about": "Depot",
+    "home": "Wehda",
+    "about": "Home",
     "services": "Profile",
     "contact": "Contact",
     "support": "Support",
@@ -245,7 +245,7 @@
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
     "license": "License",
-    "copyright": "© 2025 Wehda – Smart platform for empowering contractors"
+    "copyright": "© WEHDA 1.0 – Smart platform for empowering contractors"
   }
 },
     "workers": {
