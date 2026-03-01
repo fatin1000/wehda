@@ -200,12 +200,40 @@
     "3": "Generate ready-made quotations and statements",
     "4": "Suggest suitable suppliers and subcontractors for each project"
   },
-  "pricingSoon": {
-    "soon": "Coming soon",
-    "h": "Plans & Pricing",
-    "p": "We are in the MVP launch phase, working with a group of contractors and suppliers to test Wehda for free. Soon we will announce flexible subscription plans suitable for all company sizes—from small workshops to mid-sized firms.",
-    "b": "Register now to be among the first users and receive early launch discounts."
-  },
+    "pricing": {
+      "title": "Available Plans",
+      "subscribe": "Subscribe Now",
+      "plans": {
+        "contractor_basic": {
+          "title": "Contractor Basic",
+          "price": "Free",
+          "subtitle": "Launch Offer",
+          "description": "Join the network and start buying and selling with no fees",
+          "features": [
+            "Create a professional company profile",
+            "Appear in search results",
+            "Direct communication with suppliers and contractors",
+            "Buy and sell scrap materials",
+            "Participate in group purchasing deals"
+          ]
+        },
+        "supplier_light": {
+          "title": "Supplier Lite",
+          "price": "Free",
+          "subtitle": "Launch Offer",
+          "description": "Open a direct sales channel for contractors",
+          "features": [
+            "Create a company profile in the network",
+            "Appear in search results",
+            "Post offers for contractors with individual sales",
+            "Create offers within group purchasing deals",
+            "Sell stagnant materials (scrap)",
+            "Direct communication with contractors"
+          ]
+        }
+      }
+    }
+  ,
   "test": {
     "h": "Current Trials – MVP Phase",
     "p": "Wehda is currently working with a selected group of contractors and suppliers in the first trial phase. We are testing all features, collecting feedback, and improving the experience before the official launch.",

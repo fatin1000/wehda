@@ -12,8 +12,8 @@ import HowItWork from '../components/home/HowItWork'
 import Serve from '../components/home/Serve'
 import Featuers from '../components/home/Featuers'
 import Ai from '../components/home/Ai'
-import PricingSoon from '../components/home/PricingSoon'
 import Test from '../components/home/Test'
+import PricingPlans from '../components/home/PricingPlans'
 
 const HomePage = () => {
   return (
@@ -24,12 +24,12 @@ const HomePage = () => {
       {/* <Testimon/> */}
       {/* <Pricing/> */}
       {/* <Trust/> */}
-      <WhyWehda/>
-      <HowItWork/>
+      {/* <WhyWehda/>
+      <HowItWork/> */}
       <Serve/>
       <Featuers/>
-      <Ai/>
-      <PricingSoon />
+      {/* <Ai/> */}
+      <PricingPlans />
       <FAQ/>
       <Test />
       <Contact/>
