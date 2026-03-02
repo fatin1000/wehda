@@ -26,6 +26,10 @@ const getFeatures = (t) => [
   {
     name: t('home.how.6'),
     icon: CheckBadgeIcon,
+  },
+  {
+    name: t('home.how.7'),
+    icon: CheckBadgeIcon,
   }
 ]
 

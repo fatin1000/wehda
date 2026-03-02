@@ -87,7 +87,7 @@ const Navbar = () => {
 
 										</ul>}
 								</div>
-								<Link to="/depot" className='text-neutral flex flex-col items-center mx-3'>
+								<Link to={ authUser ? "/depot" : "/login"} className='text-neutral flex flex-col items-center mx-3'>
 									{/* <img src={warehouse} alt="" className="h-5" /> */}
 									<Store />
 									<span className='hidden md:block md:text-xs'>{t("navbar.Home")}</span>
@@ -172,7 +172,7 @@ const Navbar = () => {
 							<>
 								{authAdmin ? <Link to='/admin' className='btn bg-primary text-white'>Admin</Link> :
 									<>
-										<Link to="/depot" className='text-neutral flex flex-col items-center'>
+										<Link to={ authUser ? "/depot" : "/login"} className='text-neutral flex flex-col items-center'>
 											{/* <img src={warehouse} alt="" className="h-5" /> */}
 											 <Store />
 											<span className='hidden md:block md:text-xs'>{t("navbar.Home")}</span>

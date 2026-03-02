@@ -146,7 +146,7 @@
     "dataToEnrich": "Manage contracting work easily and intelligently",
     "heroDescription": "Wehda helps you organize your projects, manage purchases, communicate with suppliers and subcontractors, and generate invoices and statements with ease.",
     "getStarted": "Get started",
-    "learnMore": "How the platform works"
+    "learnMore": "How Wehda works"
   },
   "about": {
     "deployFaster": "Work faster",
@@ -164,12 +164,13 @@
   },
   "how": {
     "howWehda": "How does Wehda work?",
-    "1": "Create your account as a contractor or supplier",
-    "2": "Add your project or request for quotation",
-    "3": "Receive offers and comparisons from suppliers automatically",
-    "4": "Choose the best offer and create a purchase order",
-    "5": "Track execution, statements, and payments from one dashboard",
-    "6": "Get smart reports to help you make quick decisions"
+      "1": "Register your company as a contractor or supplier and join an integrated execution network.",
+      "2": "Add your project or material requirements within minutes.",
+      "3": "Choose individual purchasing or join a group buying deal with other contractors to increase your negotiating power.",
+      "4": "Receive supplier offers and compare prices transparently from one place.",
+      "5": "Lock in the best offer and create a purchase order directly from the platform.",
+      "6": "Track execution, progress payments, and invoices from a unified dashboard.",
+      "7": "Access reports that help you control costs and make data-driven decisions."
   },
   "serve": {
     "wehdaServe": "Who does Wehda serve?",
@@ -235,9 +236,9 @@
     }
   ,
   "test": {
-    "h": "Current Trials – MVP Phase",
-    "p": "Wehda is currently working with a selected group of contractors and suppliers in the first trial phase. We are testing all features, collecting feedback, and improving the experience before the official launch.",
-    "note": "Note: Final figures will be announced after the public launch, but initial trials showed noticeable savings in time and cost."
+    "h": "Operational launch – by invitation only",
+    "p": "The unit is currently working with a limited group of contractors and suppliers as part of its initial operational launch. The platform's core functions are being tested in a real-world work environment, with performance being monitored and the user experience gradually improved before public registration opens. ",
+    "note": "Note: Performance results and official figures will be published after the first operational cycle of projects within the platform is complete."
   },
   "contact": {
     "title": "Contact Us",
@@ -273,7 +274,8 @@
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
     "license": "License",
-    "copyright": "© WEHDA 1.0 – Smart platform for empowering contractors"
+    "copyright": "© Wehda – Founding Edition (Limited) – Smart platform for empowering contractors",
+    "p":"Wehda is committed to empowering small and medium construction companies in Saudi Arabia through a unified digital network that combines the marketplace, AI tools, and project management to enhance efficiency, profitability, and full control over projects."
   }
 },
     "workers": {

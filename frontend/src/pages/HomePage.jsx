@@ -24,14 +24,15 @@ const HomePage = () => {
       {/* <Testimon/> */}
       {/* <Pricing/> */}
       {/* <Trust/> */}
-      {/* <WhyWehda/>
-      <HowItWork/> */}
+      {/* <WhyWehda/> */}
+      <HowItWork/>
       <Serve/>
       <Featuers/>
       {/* <Ai/> */}
       <PricingPlans />
-      <FAQ/>
+     
       <Test />
+      <FAQ/>
       <Contact/>
       <Footer/>
     </div>

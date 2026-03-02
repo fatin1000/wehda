@@ -22,6 +22,7 @@ const Footer = () => {
         <div>
           <p><a href="mailto:team@wehda.io" className="flex items-center gap-2  text-gray-500 mb-3"><Mail size={20} /> team@wehda.io</a></p>
           <p className="flex items-center gap-2  text-gray-500 mb-3">{t("home.footer.copyright")}</p>
+          <p className="text-sm">{t("home.footer.p")}</p>
         </div>
         <div>
           <h4 className="mb-3 font-semibold">{t("home.footer.company")}</h4>
