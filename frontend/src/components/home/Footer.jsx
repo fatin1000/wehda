@@ -20,7 +20,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col sm:flex-row justify-between  gap-2">
         <div>
-          <p><a href="mailto:team@wehda.io" className="flex items-center gap-2  text-gray-500 mb-3"><Mail size={20} /> team@wehda.io</a></p>
+          <p><a href="mailto:info@wehda.tech" className="flex items-center gap-2  text-gray-500 mb-3"><Mail size={20} />info@wehda.tech</a></p>
           <p className="flex items-center gap-2  text-gray-500 mb-3">{t("home.footer.copyright")}</p>
           <p className="text-sm">{t("home.footer.p")}</p>
         </div>
@@ -30,7 +30,7 @@ const Footer = () => {
             <li>
               <a href="#">{t("home.footer.home")}</a>
             </li>
-            <Link to="/depot">
+            <Link to={ authUser ? "/depot" : "/login"}>
               {t("home.footer.about")}
               </Link>
             <Link to={ authUser ? `/profile/${authUser._id}` : "/login"}>

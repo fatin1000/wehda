@@ -13,7 +13,7 @@ export default function Hero() {
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               {t("home.hero.announcingFunding")}{' '}
-              <a href="#" className="font-semibold text-primary">
+              <a href="#features" className="font-semibold text-primary">
                 <span aria-hidden="true" className="absolute inset-0" />
                 {t("home.hero.readMore")} <span aria-hidden="true">&rarr;</span>
               </a>
